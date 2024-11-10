@@ -19,11 +19,11 @@ export default function BoxLogo() {
           height: 30,
           borderRadius: 1,
           background: `linear-gradient(200deg, #e1e9f1, #007FFF)`,
-          transform: 'rotate(1130deg)', // Añadir esta línea para rotar el Box
-          transition: 'background-color 0.3s, transform 0.3s', // Para una transición suave
+          transform: 'rotate(1130deg)',
+          transition: 'background-color 0.3s, transform 0.3s',
           '&:hover': {
             background: `linear-gradient(200deg, #e1e9f1, #007FFF)`,
-            transform: 'rotate(1130deg) scale(1.1)', // Escalar un poco al hacer hover
+            transform: 'rotate(1130deg) scale(1.1)',
           },
         }}
       />
