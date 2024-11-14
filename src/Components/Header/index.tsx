@@ -1,18 +1,14 @@
 "use client";
 import React from "react";
 import LinkButton from "../Buttons/LinkButton";
-import Title from "../Titles/Title";
-import { Box } from "@mui/material";
-import BoxLogo from "../BoxLogo";
+import CustomizedMenus from "../Menu/Menu";
+import ComponentLogo from "./ComponentLogo";
 
 const LINK_STYLE  = {
-  background: "white", 
-  border: "1px solid #7777", 
-  borderRadius: '23px', 
   padding: '10px 20px',
-  fontSize: '18px',
+  fontSize: '16px',
   whiteSpace: 'nowrap',
-  backgroundColor: '#9d969677', 
+  color: '#3E3A4E'
 }
 
 export default function Header() {
@@ -24,48 +20,43 @@ export default function Header() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "20px",
+        backgroundColor: "#fff",
+        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+        borderBottom: "1px solid #ccc",
       }}
+      
     >
-      <Box display={"flex"} alignItems={'center'} gap={1} paddingLeft={'5%'} >
-        <BoxLogo />
-        <Title variant="h4" component="h4" text="Any’s Language Academy" />
-      </Box>
+      <ComponentLogo textheader="Any’s Language Academy" />
       <nav style={{ paddingRight: "5%" }}>
         <ul style={{ display: "flex", listStyle: "none", gap: "20px" }}>
           <li>
             <LinkButton 
-            href="#" 
-            variant="body2"
-            underline="none"
-            style={LINK_STYLE}
-            text="Inicio"
+              href="#" 
+              variant="inherit"
+              underline="none"
+              style={LINK_STYLE}
+              text="Inicio"
             / >
           </li>
           <li>
-          <LinkButton 
-            href="#" 
-            variant="body2"
-            underline="none"
-            style={LINK_STYLE}
-            text="Curso"
+            <CustomizedMenus/>
+          </li>
+          <li>
+            <LinkButton 
+              href="#" 
+              variant="inherit"
+              underline="none"
+              style={LINK_STYLE}
+              text="Sobre Any"
             / >
           </li>
           <li>
-          <LinkButton 
-            href="#" 
-            variant="body2"
-            underline="none"
-            style={LINK_STYLE}
-            text="Sobre Any"
-            / >
-          </li>
-          <li>
-          <LinkButton 
-            href="#" 
-            variant="body2"
-            underline="none"
-            style={LINK_STYLE}
-            text="Contacto"
+            <LinkButton 
+              href="#" 
+              variant="inherit"
+              underline="none"
+              style={LINK_STYLE}
+              text="Contacto"
             / >
           </li>
         </ul>
