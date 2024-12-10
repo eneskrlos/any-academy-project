@@ -13,7 +13,7 @@ interface LinkButtonProps {
 export default function LinkButton({ href, text, underline, style, variant } : LinkButtonProps) {
   return (
     <Link 
-      href={href} 
+      href={href}
       variant={variant}
       underline={underline}
       style={style}

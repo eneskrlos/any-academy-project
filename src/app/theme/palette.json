@@ -1,0 +1,28 @@
+{
+    "common": {
+      "black": "#000000",
+      "white": "#fff"
+    },
+    "background": {
+      "paper": "#f6f6f6",
+      "default": "#ffffff"
+    },
+    "primary": {
+      "main": "#5086C1"
+    },
+    "secondary": {
+      "main": "#6A9EDA"
+    },
+    "error": {
+      "light": "#c8c8c8",
+      "main": "#f44336",
+      "dark": "#e4e4eb",
+      "contrastText": "#614f7d"
+    },
+    "text": {
+      "primary": "#3C5B7C",
+      "secondary": "#314B67",
+      "disabled": "rgba(0, 0, 0, 0.38)"
+    }
+}
+  
