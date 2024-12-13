@@ -9,7 +9,7 @@ export default function ComponentLogo() {
     <Box display={"flex"} alignItems={'center'} >
       <Image
         src='resources/images/Logo1.1.svg'
-        width={400}
+        width={230}
         height={45}
         alt="Picture of the author"
       />

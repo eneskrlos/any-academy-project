@@ -1,42 +1,47 @@
 'use client'
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { styled, alpha, Theme } from '@mui/material/styles';
 // import IconButton from '@mui/material/IconButton';;
 import Menu, { MenuProps } from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 // import Divider from '@mui/material/Divider';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from '@mui/material';
 import MenuItemCustom from './MenuItemCustom';
+import '../Menu/menu.css'
 
-const LINK_STYLE_CUSTOM  = {
-  padding: '0px 20px',
+const LINK_STYLE_CUSTOM  = (theme: Theme) => ({
+  padding: '6px 20px',
   fontSize: '16px',
   whiteSpace: 'nowrap',
-  color: '#3E3A4E',
+  color: theme.palette.primary.main,
   display: 'flex',
   alignItems: 'normal',
   justifyContent: 'center',
   '&:hover': {
-    color: '#134380',
+    color: theme.palette.text.secondary,
   },
   '&:active': {
     color: '#134380',
   }
-}
+})
 
-const MENU_ITEM_STYLE = { display: 'flex', justifyContent: 'space-between', alignItems: 'center' }
+const MENU_ITEM_STYLE = { 
+  display: 'flex', 
+  justifyContent: 'space-between', 
+  alignItems: 'center'
+}
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
     elevation={0}
     anchorOrigin={{
       vertical: 'bottom',
-      horizontal: 'right',
+      horizontal: 'left',
     }}
     transformOrigin={{
       vertical: 'top',
-      horizontal: 'right',
+      horizontal: 'left',
     }}
     {...props}
   />
@@ -46,7 +51,7 @@ const StyledMenu = styled((props: MenuProps) => (
     marginTop: theme.spacing(0),
     minWidth: 180,
     color:
-      theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
+      theme.palette.primary.main,
     boxShadow:
       'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
     '& .MuiMenu-list': {
@@ -55,12 +60,12 @@ const StyledMenu = styled((props: MenuProps) => (
     '& .MuiMenuItem-root': {
       '& .MuiSvgIcon-root': {
         fontSize: 18,
-        color: theme.palette.text.secondary,
+        color: theme.palette.primary.main,
         marginRight: theme.spacing(1.5),
       },
       '&:active': {
         backgroundColor: alpha(
-          theme.palette.primary.main,
+          theme.palette.text.primary,
           theme.palette.action.selectedOpacity,
         ),
       },
@@ -77,7 +82,7 @@ const StyledSubMenu = styled((props: MenuProps) => (
     }}
     transformOrigin={{
       vertical: 'top',
-      horizontal: 'left',
+      horizontal: -5,
     }}
     {...props}
   />
@@ -86,18 +91,17 @@ const StyledSubMenu = styled((props: MenuProps) => (
     borderRadius: 6,
     marginTop: theme.spacing(0),
     minWidth: 180,
-    color:
-      theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
+    color:theme.palette.primary.main,
     boxShadow:
       'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
     '& .MuiMenu-list': {
-      padding: '4px 0',
+      padding: '4px 0'
     },
     '& .MuiMenuItem-root': {
       '& .MuiSvgIcon-root': {
         fontSize: 18,
         color: theme.palette.text.secondary,
-        marginRight: theme.spacing(1.5),
+        marginRight: theme.spacing(1.5)
       },
       '&:active': {
         backgroundColor: alpha(
@@ -109,9 +113,10 @@ const StyledSubMenu = styled((props: MenuProps) => (
   },
 }));
 
-export default function CustomizedMenus() {
+export default function CustomizedMenus({text, theme}: {text: string, theme: Theme}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [anchorElSubmenu, setAnchorElSubmenu] = React.useState<null | HTMLElement>(null);
+  // const [isFocused, setIsFocused] = React.useState(false);
   const open = Boolean(anchorEl);
   const openSubmenu = Boolean(anchorElSubmenu);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -131,6 +136,8 @@ export default function CustomizedMenus() {
     setAnchorElSubmenu(null);
   }
 
+  const linkStyleCustom = LINK_STYLE_CUSTOM(theme)
+
   return (
     <>
       <Link 
@@ -141,10 +148,17 @@ export default function CustomizedMenus() {
         variant="inherit"
         component="button"
         underline="none"
-        style={LINK_STYLE_CUSTOM}
+        style={linkStyleCustom}
         onClick={handleClick}
       >
-        Cursos <ArrowDropDownIcon />
+        {text} 
+        <KeyboardArrowDownIcon
+          style={{
+            color: theme.palette.primary.main,
+            transition: 'transform 0.3s ease',
+            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+          }} 
+         />
       </Link>
       <StyledMenu
         id="demo-customized-menu"
@@ -155,9 +169,9 @@ export default function CustomizedMenus() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItemCustom text='Ingles' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleClickSubmenu} />
-        <MenuItemCustom text='Italiano' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleClickSubmenu} />
-        <MenuItemCustom text='Español' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleClickSubmenu} />
+        <MenuItemCustom text='Cursos' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleClickSubmenu} haveMoreOption />
+        <MenuItemCustom text='Traducción' menuItemStyle={MENU_ITEM_STYLE}  />
+        <MenuItemCustom text='Interpretación' menuItemStyle={MENU_ITEM_STYLE} />
       </StyledMenu>
 
       <StyledSubMenu
@@ -169,15 +183,9 @@ export default function CustomizedMenus() {
           'aria-labelledby': 'submenu-button',
         }}
       >
-        <MenuItem onClick={handleSubmenuClose} disableRipple>
-          Principiante
-        </MenuItem>
-        <MenuItem onClick={handleSubmenuClose} disableRipple>
-          Intermedio
-        </MenuItem>
-        <MenuItem onClick={handleSubmenuClose} disableRipple>
-          Avanzado
-        </MenuItem>
+        <MenuItemCustom text='Principiante' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
+        <MenuItemCustom text='Intermedio' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
+        <MenuItemCustom text='Avanzado' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
       </StyledSubMenu>
     </>
   );

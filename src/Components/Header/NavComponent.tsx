@@ -2,63 +2,89 @@ import React from 'react'
 import LinkButton from "../Buttons/LinkButton";
 import CustomizedMenus from "../Menu/Menu";
 import { Link } from '@mui/material';
+import { Theme, useTheme } from '@mui/material/styles';
 
-const LINK_STYLE  = {
+import { styled } from '@mui/material/styles';
+
+const Nav = styled('nav')({
+  paddingRight: '5%',
+});
+
+const Ul =styled('ul')({
+  display: "flex",
+  listStyle: "none",
+  gap: "20px",
+  alignItems: "center"
+});
+
+const LINK_STYLE = (theme: Theme) => ({
     padding: '10px 20px',
     fontSize: '16px',
     whiteSpace: 'nowrap',
-    color: '#3E3A4E'
-  }
+    color: theme.palette.primary.main,
+    
+    "&:hover": {
+      color: theme.palette.text.primary,
+      cursor: "pointer"
+    }
+})
 
-  const LINK_STYLE_BUTTOM = {
-    padding: ' 6px 20px',
-    fontSize: '16px',
-    whiteSpace: 'nowrap',
-    color: '#3E3A4E',
-    backgroundColor: '#F6F6F6',
-    borderRadius: '10px',
-    border: '1px solid #3E3A4E'
-  }
+const LINK_STYLE_BUTTOM = (theme: Theme) => ({
+  padding: ' 6px 20px',
+  fontSize: '16px',
+  whiteSpace: 'nowrap',
+  color: theme.palette.primary.main,
+  backgroundColor: 'rgba(106, 158, 218, 0.5)',
+  borderRadius: '10px',
+  border: 'none',
+  "&:hover": {
+      color: theme.palette.text.primary,
+      cursor: "pointer"
+    }
+})
 
 export default function NavComponent() {
+  const theme = useTheme();
+  const linkStyle = LINK_STYLE(theme)
+  const linkButtomStyle = LINK_STYLE_BUTTOM(theme)
   return (
-    <nav style={{ paddingRight: "5%" }}>
-        <ul style={{ display: "flex", listStyle: "none", gap: "20px" }}>
+    <Nav>
+        <Ul>
           <li>
             <LinkButton 
               href="#" 
               variant="inherit"
               underline="none"
-              style={LINK_STYLE}
+              style={linkStyle}
               text="Inicio"
             / >
           </li>
           <li>
-            <CustomizedMenus/>
+            <CustomizedMenus text={'Cursos'} theme={theme}/>
           </li>
           <li>
             <LinkButton 
               href="#" 
               variant="inherit"
               underline="none"
-              style={LINK_STYLE}
+              style={linkStyle}
               text="Sobre Any"
             / >
           </li>
-          <li style={{ display: "flex", alignItems: "center" }}>
+          <li>
             <Link
                 component="button"
                 variant="inherit"
                 underline="none"
-                style={LINK_STYLE_BUTTOM}
+                style={linkButtomStyle}
                 onClick={() => {
                     console.info("I'm a button.");
                 }}
                 >
-                Contaco
+                Contacto
             </Link>
           </li>
-        </ul>
-      </nav>
+        </Ul>
+      </Nav>
   )
 }
