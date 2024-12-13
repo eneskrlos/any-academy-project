@@ -8,7 +8,7 @@ import Menu, { MenuProps } from '@mui/material/Menu';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from '@mui/material';
 import MenuItemCustom from './MenuItemCustom';
-import '../Menu/menu.css'
+
 
 const LINK_STYLE_CUSTOM  = (theme: Theme) => ({
   padding: '6px 20px',
