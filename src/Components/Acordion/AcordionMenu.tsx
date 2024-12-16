@@ -8,6 +8,7 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import LinkButton from '../Buttons/LinkButton';
+import MenuMobile from '../Menu/MenuMobile';
 
 
 const Accordion = styled((props: AccordionProps) => (
@@ -88,7 +89,7 @@ export default function AcordionMenu() {
         <AccordionDetails>
           <Ul>
             <li>
-              Cursos
+              <MenuMobile text={'Cursos'} theme={theme} />
             </li>
             <li>
               <LinkButton 
