@@ -120,7 +120,6 @@ export default function CustomizedMenus({text, theme}: {text: string, theme: The
   const open = Boolean(anchorEl);
   const openSubmenu = Boolean(anchorElSubmenu);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    console.log('aqui')
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {

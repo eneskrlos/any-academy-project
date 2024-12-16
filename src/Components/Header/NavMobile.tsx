@@ -12,6 +12,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import LinkButton from '../Buttons/LinkButton';
+import AcordionMenu from '../Acordion/AcordionMenu';
 
 
 const STYLE_BUTTOM_ICON = (theme: Theme) => ({
@@ -40,7 +41,6 @@ const STYLE_LIST = (theme: Theme) => ({
 export default function NavMobile() {
     const theme = useTheme()
     const [state, setState] = React.useState(false);
-
     const svgWaveBlue = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path fill="#0099ff" fill-opacity="1" d="M0,0L60,0C120,0,240,0,360,10.7C480,21,600,43,720,80C840,117,960,171,1080,170.7C1200,171,1320,117,1380,90.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
@@ -68,13 +68,13 @@ export default function NavMobile() {
         <Box
           sx={{ width: 250, height: 'auto'}}
           role="presentation"
-          onClick={toggleDrawer(false)}
+          //onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
           style={{backgroundColor: theme.palette.background.paper}}
         > 
             <List>
                 <ListItem key={'Inicio'} disablePadding>
-                  <ListItemButton>
+                  <ListItemButton onClick={toggleDrawer(false)}>
                     <LinkButton 
                       href="#" 
                       variant="inherit"
@@ -85,18 +85,19 @@ export default function NavMobile() {
                   </ListItemButton>
                 </ListItem>
                 <ListItem key={'Servicios'}  disablePadding>
-                    <ListItemButton>
-                      <LinkButton 
+                    {/*<ListItemButton>
+                       <LinkButton 
                         href="#" 
                         variant="inherit"
                         underline="none"
                         style={STYLE_LIST(theme)}
                         text="Servicios"
-                      / >
-                    </ListItemButton>
+                      / > 
+                    </ListItemButton> */}
+                      <AcordionMenu />
                 </ListItem>
                 <ListItem key={'Sobre Any'}  disablePadding>
-                    <ListItemButton>
+                    <ListItemButton onClick={toggleDrawer(false)}>
                       <LinkButton 
                         href="#" 
                         variant="inherit"
@@ -107,7 +108,7 @@ export default function NavMobile() {
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'Contacto'}  disablePadding>
-                    <ListItemButton>
+                    <ListItemButton onClick={toggleDrawer(false)}>
                       <LinkButton 
                         href="#" 
                         variant="inherit"

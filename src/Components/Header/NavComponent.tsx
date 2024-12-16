@@ -60,7 +60,7 @@ export default function NavComponent() {
             / >
           </li>
           <li>
-            <CustomizedMenus text={'Cursos'} theme={theme}/>
+            <CustomizedMenus text={'Servicios'} theme={theme}/>
           </li>
           <li>
             <LinkButton 
