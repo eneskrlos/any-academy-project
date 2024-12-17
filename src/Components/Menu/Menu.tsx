@@ -16,7 +16,7 @@ const LINK_STYLE_CUSTOM  = (theme: Theme) => ({
   whiteSpace: 'nowrap',
   color: theme.palette.primary.main,
   display: 'flex',
-  alignItems: 'normal',
+  alignItems: 'center',
   justifyContent: 'center',
   '&:hover': {
     color: theme.palette.text.secondary,

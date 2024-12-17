@@ -2,7 +2,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
-import { Navigation, Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import { Grid2, useTheme } from '@mui/material';
 import './styleSlider.css'
 import Title from '../Titles/Title';
@@ -18,10 +18,11 @@ const SwiperComppnent = () => {
                 <Swiper
                     spaceBetween={50}
                     slidesPerView={1}
+                    loop={true}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
-                    modules={[Navigation, Pagination]}
-                    navigation
+                    modules={[Pagination, Autoplay]}
+                    autoplay={{ delay: 5000 }}
                     pagination={{ clickable: true }}
                     style={{ width: '100%', height: '100%' }}
                 >
@@ -36,7 +37,7 @@ const SwiperComppnent = () => {
                                             color: theme.palette.background.paper,
                                             fontWeight: '600',
                                             textAlign: 'left',
-                                            lineHeight: '80px',
+                                            lineHeight: '90px',
                                             width: '758px',
                                             height: 'auto',
                                             textTransform: 'uppercase',
@@ -47,7 +48,7 @@ const SwiperComppnent = () => {
                                     <Title text='Aprende un idioma, abre un mundo ' variant='subtitle1' component={'p'} style={{ 
                                             fontFamily: '"Quicksand", sans-serif',
                                             fontSize: '60px',
-                                            color: theme.palette.text.primary,
+                                            color: theme.palette.text.secondary,
                                             fontWeight: '400',
                                             textAlign: 'left',
                                             letterSpacing: '0%',
@@ -83,7 +84,7 @@ const SwiperComppnent = () => {
                                                 color: theme.palette.background.paper,
                                                 fontWeight: '600',
                                                 textAlign: 'left',
-                                                lineHeight: '80px',
+                                                lineHeight: '90px',
                                                 width: '758px',
                                                 height: 'auto',
                                                 textTransform: 'uppercase',
@@ -96,7 +97,7 @@ const SwiperComppnent = () => {
                                         style={{ 
                                             fontFamily: '"Quicksand", sans-serif',
                                             fontSize: '60px',
-                                            color: theme.palette.text.primary,
+                                            color: theme.palette.text.secondary,
                                             fontWeight: '400',
                                             textAlign: 'left',
                                             letterSpacing: '0%',
@@ -126,14 +127,14 @@ const SwiperComppnent = () => {
                             <Grid2>
                                 <article>
                                     <header>
-                                        <Title text='Aprende un idioma, abre un mundo ' variant='h1' 
+                                        <Title text='Todo en un solo lugar' variant='h1' 
                                             style={{ 
                                                 fontFamily: '"Quicksand", sans-serif',
                                                 fontSize: '95px',
                                                 color: theme.palette.background.paper,
                                                 fontWeight: '600',
                                                 textAlign: 'left',
-                                                lineHeight: '80px',
+                                                lineHeight: '90px',
                                                 width: '848px',
                                                 height: 'auto',
                                                 textTransform: 'uppercase',
@@ -142,11 +143,11 @@ const SwiperComppnent = () => {
                                             }} 
                                         />
                                     </header>
-                                    <Title text='Aprende un idioma, abre un mundo ' variant='subtitle1' component={'p'} 
+                                    <Title text='Cursos, traducción e interpretación.' variant='subtitle1' component={'p'} 
                                         style={{ 
                                             fontFamily: '"Quicksand", sans-serif',
                                             fontSize: '60px',
-                                            color: theme.palette.text.primary,
+                                            color: theme.palette.text.secondary,
                                             fontWeight: '400',
                                             textAlign: 'left',
                                             letterSpacing: '0%',
@@ -160,11 +161,11 @@ const SwiperComppnent = () => {
                             <Grid2>
                                 <picture>
                                     <ImageComponet 
-                                        src='/resources/images/Girl_studying_with_book_and_laptop.png' 
-                                        alt='Girl studying with book and laptop' 
+                                        src='/resources/images/notebook_with_glasses_and_pencil.png' 
+                                        alt='notebook with glasses and pencil' 
                                         priority 
-                                        width={552} 
-                                        height={459}
+                                        width={439} 
+                                        height={456}
                                         style={{ }} 
                                     />
                                 </picture>
