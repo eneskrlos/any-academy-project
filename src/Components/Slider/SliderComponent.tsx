@@ -45,7 +45,7 @@ const SwiperComppnent = () => {
                                             marginBottom: '37px'
                                         }} />
                                     </header>
-                                    <Title text='Aprende un idioma, abre un mundo ' variant='subtitle1' component={'p'} style={{ 
+                                    <Title text='¡Domina el idioma de tus sueños!' variant='subtitle1' component={'p'} style={{ 
                                             fontFamily: '"Quicksand", sans-serif',
                                             fontSize: '60px',
                                             color: theme.palette.text.secondary,
