@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { useTheme } from '@mui/material'
 import CursosView from '@/Views/Cursos/Index'
