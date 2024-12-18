@@ -38,7 +38,9 @@ body {
   margin: 0;
 }
 
-
+main {
+  margin-bottom: 20px;
+}
 
 /* a {
   color: inherit;

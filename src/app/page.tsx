@@ -1,5 +1,6 @@
 import Header from "@/Components/Header"
 import SwiperComppnent from "@/Components/Slider/SliderComponent";
+import SectionCursos from "./Cursos/page";
 
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Header/>
       <main>
         <SwiperComppnent />
+        <SectionCursos/>
       </main>
       <footer>
       </footer>
