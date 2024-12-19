@@ -6,7 +6,7 @@ interface PropsImage {
     height: number,
     alt: string,
     priority: boolean
-    style: React.CSSProperties
+    style?: React.CSSProperties
 }
  
 export default function ImageComponet({ src, width, height, alt, priority = false, style }: PropsImage) {
@@ -17,7 +17,7 @@ export default function ImageComponet({ src, width, height, alt, priority = fals
       height={height}
       alt={alt}
       priority={priority}
-      style={style}
+      style={style || {}}
     />
   )
 }

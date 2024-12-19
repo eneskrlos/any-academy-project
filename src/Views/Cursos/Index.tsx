@@ -3,6 +3,7 @@ import React from 'react'
 import Title from '@/Components/Titles/Title'
 import CarouselComponent from '@/Components/Slider/CarouselComponent'
 import { Grid2, Theme } from '@mui/material'
+import ImageComponet from '@/Components/Image/ImageComponent'
 
 const styleArticle: React.CSSProperties = {
     marginTop: '80px',
@@ -60,6 +61,20 @@ export default function CursosView({ theme } : HomePorps) {
             </aside>
             <Grid2 sx={{ width: '90%', height: 'auto' }}>
                 <CarouselComponent theme={theme} />
+            </Grid2>
+            <Grid2>
+                <figure style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: 'auto', marginTop: '54px' }}>
+                    <picture>
+                        <ImageComponet 
+                            src='/resources/images/girl_with_books_and _backpack.png' 
+                            alt='girl with books and  backpack' 
+                            width={498} 
+                            height={392}
+                            style={{}} 
+                            priority
+                        />
+                    </picture>
+                </figure>
             </Grid2>
         </section>
   )
