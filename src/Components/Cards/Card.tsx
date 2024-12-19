@@ -7,19 +7,25 @@ import ImageComponet from '../Image/ImageComponent';
 import Title from '../Titles/Title';
 import { Theme } from '@mui/material';
 
+interface ImageAction {
+    src: string
+    alt: string
+}
+
+
 interface CardProps {
     title: string
     description: string
     theme: Theme
-    urlImageAction: string
+    imageAction: ImageAction
     // button: string
 }
 
-export default function CardComponent({ title,description, theme, urlImageAction }:CardProps) {
+export default function CardComponent({ title,description, theme, imageAction }:CardProps) {
   return (
     <Card sx={{ width: '100%', height: '300px', margin: '0px 20px 0px 20px', border: '1px solid #6A9EDA', borderRadius: '10px'   }} >
       <CardActions style={{ background: '#6A9EDA', width: 60, height: 45, borderRadius: '10px 0 10px 0' }}>
-        <ImageComponet src={urlImageAction} alt='Class lession' width={32} height={32} style={{}} priority />
+        <ImageComponet src={imageAction.src} alt={imageAction.alt} width={32} height={32} style={{}} priority />
       </CardActions>
       <CardContent>
         <article>

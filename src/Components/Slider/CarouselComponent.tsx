@@ -38,7 +38,10 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
             description={`Ideal para estudiantes, profesionales y 
               viajeros que buscan mejorar su fluidez, comprensión y 
               confianza en el idioma.`} 
-              urlImageAction='/resources/images/streamline_class-lesson.svg'
+              imageAction={{
+                src: '/resources/images/streamline_class-lesson.svg',
+                alt: 'class-lesson'
+              }} 
           />
         </SwiperSlide>
         <SwiperSlide style={STYLE_SWIPER_SLIDER}>
@@ -47,7 +50,10 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
             title='Curso Italiano' 
             description={`Programas combinados con técnicas
                modernas de enseñanza y orientaciones de instructores.`}
-            urlImageAction='/resources/images/streamline_class-lesson.svg'
+            imageAction={{
+              src: '/resources/images/streamline_class-lesson.svg',
+              alt: 'icon class lesson'
+            }}
           />
         </SwiperSlide>
         <SwiperSlide style={STYLE_SWIPER_SLIDER}>
@@ -57,7 +63,10 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
             description={`Diseñado para que, sin importar su nivel actual, 
               desarrolle habilidades prácticas que podrá usar 
               desde el primer día.`}
-              urlImageAction='/resources/images/streamline_class-lesson.svg'  
+              imageAction={{
+                src: '/resources/images/streamline_class-lesson.svg',
+                alt: 'icon class lesson'
+              }}  
           />
         </SwiperSlide>
         <SwiperSlide style={STYLE_SWIPER_SLIDER}>
@@ -66,7 +75,10 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
             title='Traducción' 
             description={`Servicio de alta calidad para documentos legales,
                técnicos, académicos y corporativos.`}
-               urlImageAction='/resources/images/hugeicons_translation.svg'  
+               imageAction={{
+                src: '/resources/images/hugeicons_translation.svg',
+                alt: 'icons translation'
+              }}  
           />
         </SwiperSlide>
         <SwiperSlide style={STYLE_SWIPER_SLIDER}>
@@ -75,30 +87,43 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
             title='Interpretación' 
             description='Mediante intérpretes facilitamos 
             la comunicación en reuniones, eventos y conferencias .'
-            urlImageAction='/resources/images/ic_outline-interpreter-mode.svg'  
+            imageAction={{
+              src: '/resources/images/ic_outline-interpreter-mode.svg',
+              alt: 'icon interpreter mode'
+            }}  
           />
         </SwiperSlide>
         <SwiperSlide style={STYLE_SWIPER_SLIDER}>
           <CardComponent 
-          theme={theme} 
-          title='slider 6' 
-          description='description' 
-          urlImageAction='/resources/images/streamline_class-lesson.svg' />
+            theme={theme} 
+            title='slider 6' 
+            description='description' 
+            imageAction={{
+              src: '/resources/images/streamline_class-lesson.svg',
+              alt: 'icon class lesson' 
+            }} 
+        />
         </SwiperSlide>
         <SwiperSlide style={STYLE_SWIPER_SLIDER}>
           <CardComponent 
-          theme={theme} 
-          title='slider 7' 
-          description='description'
-          urlImageAction='/resources/images/streamline_class-lesson.svg'  
+            theme={theme} 
+            title='slider 7' 
+            description='description'
+            imageAction={{
+              src: '/resources/images/streamline_class-lesson.svg',
+              alt: 'icon class lesson' 
+            }}  
           />
         </SwiperSlide>
         <SwiperSlide style={STYLE_SWIPER_SLIDER}>
           <CardComponent 
-          theme={theme} 
-          title='slider 8' 
-          description='description'
-          urlImageAction='/resources/images/streamline_class-lesson.svg'  
+            theme={theme} 
+            title='slider 8' 
+            description='description'
+            imageAction={{
+              src: '/resources/images/streamline_class-lesson.svg',
+              alt: 'icon class lesson' 
+            }}  
           />
         </SwiperSlide>
     </Swiper>
