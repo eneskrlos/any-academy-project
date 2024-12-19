@@ -2,14 +2,14 @@
 import React from 'react'
 import Title from '@/Components/Titles/Title'
 import CarouselComponent from '@/Components/Slider/CarouselComponent'
-import { Theme } from '@mui/material'
+import { Grid2, Theme } from '@mui/material'
 
 const styleArticle: React.CSSProperties = {
     marginTop: '80px',
-    display: 'flex',
+    /* display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
+    flexDirection: 'column', */
     width: '100%',
     height: 'auto',
 }
@@ -20,7 +20,7 @@ interface HomePorps {
 
 export default function CursosView({ theme } : HomePorps) {
   return (
-<section style={{ width: '100%', height: 'auto' }}>
+<section style={{ width: '100%', height: 'auto', display: 'flex', flexDirection: 'column',  justifyContent: 'center', alignItems: 'center'}}>
             <aside  style={{ marginBottom: '54px' }}>
                 <article style={styleArticle}>
                     <header>
@@ -49,15 +49,18 @@ export default function CursosView({ theme } : HomePorps) {
                             color: theme.palette.text.primary,
                             fontWeight: '400',
                             textAlign: 'center',
-                            letterSpacing: '0%',
                             lineHeight: '30px',
                             width: '952px',
-                            textWrap: 'wrap'
+                            textWrap: 'wrap',
+                            position: 'relative',
+                            left: '3%'
                         }} 
                     />
                 </article>
             </aside>
-            <CarouselComponent theme={theme} />
+            <Grid2 sx={{ width: '90%', height: 'auto' }}>
+                <CarouselComponent theme={theme} />
+            </Grid2>
         </section>
   )
 }
