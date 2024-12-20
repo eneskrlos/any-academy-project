@@ -72,7 +72,7 @@ const LIST_SERVICES = [
       alt: 'icon interpreter mode'
               }
   },
-  {
+  /* {
     id: 6,
     title:'Curso Frances', 
     description:`Ideal para estudiantes, profesionales y 
@@ -104,7 +104,7 @@ const LIST_SERVICES = [
       src: '/resources/images/streamline_class-lesson.svg',
       alt: 'class-lesson'
               }
-  }
+  } */
 ]
 
 export default function CarouselComponent({ theme }:CarouselPorps) {
@@ -112,12 +112,12 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
     // Calcula el índice central basado en el activeIndex
     const getCenterIndex = (index: number) => {
       const totalSlides = LIST_SERVICES.length;
-      return (index + Math.floor(5 / 2)) % totalSlides;
+      return (index + Math.floor(3 / 2)) % totalSlides;
     };
   return (
     <Swiper
-        spaceBetween={40}
-        slidesPerView={5}
+        spaceBetween={35}
+        slidesPerView={3}
         loop={true}
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex)
@@ -125,7 +125,7 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
         onSwiper={(swiper) => console.log("swiper:",swiper)}
         modules={[Navigation]}
         navigation
-        style={{ width: '1555px', height: '100%', padding: '35px' }}
+        style={{ width: '1048px', height: '100%', padding: '35px' }}
     >
       {
         LIST_SERVICES.map((service, index) => {
