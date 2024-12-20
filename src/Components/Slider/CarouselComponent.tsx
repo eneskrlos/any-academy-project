@@ -111,7 +111,7 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <Swiper
-        spaceBetween={50}
+        spaceBetween={40}
         slidesPerView={5}
         //loop={true}
         onSlideChange={(swiper) => {
@@ -120,7 +120,7 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
         onSwiper={(swiper) => console.log("swiper:",swiper)}
         modules={[Navigation]}
         navigation
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '1555px', height: '100%', padding: '35px' }}
     >
       {
         LIST_SERVICES.map((service, index) => {

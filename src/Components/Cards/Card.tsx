@@ -23,7 +23,7 @@ interface CardProps {
 
 export default function CardComponent({ title,description, theme, imageAction }:CardProps) {
   return (
-    <Card sx={{ width: '100%', height: '300px', margin: '0px 20px 0px 20px', border: '1px solid #6A9EDA', borderRadius: '10px' }} >
+    <Card sx={{ width: '260px', height: '300px', margin: '0px 20px 0px 20px', border: '1px solid #6A9EDA', borderRadius: '10px', boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.2)'  }} >
       <CardActions style={{ background: '#6A9EDA', width: 60, height: 45, borderRadius: '10px 0 10px 0' }}>
         <ImageComponet src={imageAction.src} alt={imageAction.alt} width={32} height={32} style={{}} priority />
       </CardActions>
