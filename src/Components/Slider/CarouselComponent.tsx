@@ -93,7 +93,7 @@ const LIST_SERVICES = [
       src: '/resources/images/streamline_class-lesson.svg',
       alt: 'class-lesson'
               }
-  },
+  } ,
   {
     id: 8,
     title:'Curso Japones', 
@@ -109,13 +109,18 @@ const LIST_SERVICES = [
 
 export default function CarouselComponent({ theme }:CarouselPorps) {
   const [activeIndex, setActiveIndex] = useState(0);
+    // Calcula el índice central basado en el activeIndex
+    const getCenterIndex = (index: number) => {
+      const totalSlides = LIST_SERVICES.length;
+      return (index + Math.floor(totalSlides / 4)) % totalSlides;
+    };
   return (
     <Swiper
         spaceBetween={40}
         slidesPerView={5}
-        //loop={true}
+        loop={true}
         onSlideChange={(swiper) => {
-          setActiveIndex(swiper.activeIndex)
+          setActiveIndex(swiper.realIndex)
         }}
         onSwiper={(swiper) => console.log("swiper:",swiper)}
         modules={[Navigation]}
@@ -124,7 +129,8 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
     >
       {
         LIST_SERVICES.map((service, index) => {
-          const isCenterSlide = (index === activeIndex - 2 || index === activeIndex + 2);
+          const centerIndex = getCenterIndex(activeIndex);
+          const isCenterSlide = index === centerIndex;
           return (
           <SwiperSlide key={index} style={{ ...STYLE_SWIPER_SLIDER, transform: isCenterSlide ? 'scale(1.2)' : 'scale(1)'}}>
             <CardComponent
