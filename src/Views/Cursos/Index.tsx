@@ -59,7 +59,7 @@ export default function CursosView({ theme } : HomePorps) {
                     />
                 </article>
             </aside>
-            <Grid2 sx={{ width: '90%', height: 'auto' }}>
+            <Grid2 sx={{ width: '90%', height: '365px' }}>
                 <CarouselComponent theme={theme} />
             </Grid2>
             <Grid2>
