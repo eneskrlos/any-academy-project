@@ -112,7 +112,7 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
     // Calcula el índice central basado en el activeIndex
     const getCenterIndex = (index: number) => {
       const totalSlides = LIST_SERVICES.length;
-      return (index + Math.floor(totalSlides / 4)) % totalSlides;
+      return (index + Math.floor(5 / 2)) % totalSlides;
     };
   return (
     <Swiper
