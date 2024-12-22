@@ -122,7 +122,6 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex)
         }}
-        onSwiper={(swiper) => console.log("swiper:",swiper)}
         modules={[Navigation]}
         navigation
         style={{ width: '1048px', height: '100%', padding: '35px' }}

@@ -153,7 +153,7 @@ export default function CustomizedMenus({text, theme}: {text: string, theme: The
         {text} 
         <KeyboardArrowDownIcon
           style={{
-            color: theme.palette.primary.main,
+            color: theme.palette.secondary.main,
             transition: 'transform 0.3s ease',
             transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
           }} 

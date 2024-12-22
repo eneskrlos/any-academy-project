@@ -17,8 +17,6 @@ const SwiperComppnent = () => {
                     spaceBetween={50}
                     slidesPerView={1}
                     loop={true}
-                    onSlideChange={() => {}}
-                    onSwiper={(swiper) => console.log(swiper)}
                     modules={[Pagination, Autoplay]}
                     autoplay={{ delay: 5000 }}
                     pagination={{ clickable: true }}
