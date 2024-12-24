@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 // import Button from '@mui/material/Button';
 import ImageComponet from '../Image/ImageComponent';
 import Title from '../Titles/Title';
-import { Theme } from '@mui/material';
+import { Theme, useMediaQuery } from '@mui/material';
 
 interface ImageAction {
     src: string
@@ -22,6 +22,7 @@ interface CardProps {
 }
 
 export default function CardComponent({ title,description, theme, imageAction }:CardProps) {
+  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 920px)")
   return (
     <Card sx={{ width: '260px', height: '300px', margin: '0px 20px 0px 20px', border: '1px solid #6A9EDA', borderRadius: '10px', boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.2)'  }} >
       <CardActions style={{ background: '#6A9EDA', width: 60, height: 45, borderRadius: '10px 0 10px 0' }}>
@@ -35,15 +36,15 @@ export default function CardComponent({ title,description, theme, imageAction }:
               variant='h4'
               style={{
                 fontFamily: '"Quicksand", sans-serif',
-                fontSize: '22px',
+                fontSize: isTablet ? '20px' :'22px',
                 color: theme.palette.text.secondary,
                 fontWeight: '600',
                 textAlign: 'center',
-                lineHeight: '40px',
+                lineHeight: isTablet ? '30px' : '40px',
                 width: 'auto',
                 height: 'auto',
                 textWrap: 'wrap',
-                marginBottom: '22px'
+                marginBottom: isTablet ? '10px' : '22px'
               }} 
             />
           </header>
@@ -53,7 +54,7 @@ export default function CardComponent({ title,description, theme, imageAction }:
             component={'p'}
             style={{
               fontFamily: '"Quicksand", sans-serif',
-              fontSize: '20px',
+              fontSize: isTablet ? '17px' : '20px',
               color: theme.palette.text.primary,
               fontWeight: '400',
               textAlign: 'left',

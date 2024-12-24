@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
 
-import { Grid2 } from "@mui/material";
+import { Grid2, useMediaQuery } from "@mui/material";
 import Title from "../Titles/Title";
 
 import { useTheme } from "@mui/material";
@@ -23,19 +23,20 @@ interface SliderConentProps {
 
 const SlideContent = ({ title, subtitle, image}: SliderConentProps) => {
     const theme = useTheme();
+    const isMobil = useMediaQuery("(max-width: 768px)")
     return (
-        <Grid2 container spacing={2} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '88px', marginBottom: '130px' }}>
+        <Grid2 container spacing={2} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '88px', marginBottom: isMobil? '95px' : '130px' }}>
             <Grid2>
                 <article>
                     <header>
                         <Title text={title} variant='h1' style={{
                             fontFamily: '"Quicksand", sans-serif',
-                            fontSize: '95px',
+                            fontSize: isMobil? '65px' : '95px',
                             color: theme.palette.background.paper,
                             fontWeight: '600',
-                            textAlign: 'left',
-                            lineHeight: '90px',
-                            width: '758px',
+                            textAlign: isMobil ? 'center' : 'left',
+                            lineHeight: isMobil? '60px' : '90px',
+                            maxWidth: '758px',
                             height: 'auto',
                             textTransform: 'uppercase',
                             textWrap: 'wrap',
@@ -44,13 +45,12 @@ const SlideContent = ({ title, subtitle, image}: SliderConentProps) => {
                     </header>
                     <Title text={subtitle} variant='subtitle1' component={'p'} style={{
                         fontFamily: '"Quicksand", sans-serif',
-                        fontSize: '60px',
+                        fontSize: isMobil? '40px' : '60px',
                         color: theme.palette.text.primary,
                         fontWeight: '400',
-                        textAlign: 'left',
-                        letterSpacing: '0%',
-                        lineHeight: '60px',
-                        width: '638px',
+                        textAlign: isMobil ? 'center' : 'left',
+                        lineHeight: isMobil? '30px' :'60px',
+                        maxWidth: '638px',
                         textWrap: 'wrap'
                     }} />
                 </article>
@@ -63,6 +63,9 @@ const SlideContent = ({ title, subtitle, image}: SliderConentProps) => {
                         priority 
                         width={image.width} 
                         height={image.height}
+                        style={{
+                            objectFit: 'contain'
+                        }}
                     />
                 </picture>
             </Grid2>

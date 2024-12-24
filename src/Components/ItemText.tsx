@@ -15,8 +15,9 @@ interface ItemTextProps {
 
 const LineaVertical = styled('div')(({ color  }) => ({
     width: '6px',                // Ancho de la línea
-    height: '52px',              // Altura de la línea
+    minHeight: '52px',              // Altura de la línea
     backgroundColor: color, // Color de la línea usando el tema
+    marginRight: '15px'
 }));
 
 export default function ItemText({ theme, sx, text, lineVertical }:ItemTextProps) {
@@ -31,7 +32,8 @@ export default function ItemText({ theme, sx, text, lineVertical }:ItemTextProps
             display: 'flex', 
             justifyContent: 'center', 
             alignItems: 'center',
-            color: 'white'
+            color: 'white',
+            marginRight: '15px'
             }}
             > 
                 <CheckIcon fontSize={'medium'} />
@@ -50,7 +52,7 @@ export default function ItemText({ theme, sx, text, lineVertical }:ItemTextProps
                 color: theme.palette.text.primary,
                 lineHeight: '50px',
                 textAlign: 'left',
-                width: '760px',
+                maxWidth: '760px',
                 textWrap: 'wrap',
             }} 
             />

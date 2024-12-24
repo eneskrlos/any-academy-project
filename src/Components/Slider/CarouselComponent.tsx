@@ -1,6 +1,6 @@
 'use client'
 import React,  { useState }  from 'react'
-import { Theme } from '@mui/material'
+import { Theme, useMediaQuery } from '@mui/material'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
@@ -109,6 +109,7 @@ const LIST_SERVICES = [
 
 export default function CarouselComponent({ theme }:CarouselPorps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const isMobile = useMediaQuery("(max-width: 768px)");
     // Calcula el índice central basado en el activeIndex
     const getCenterIndex = (index: number) => {
       const totalSlides = LIST_SERVICES.length;
@@ -116,15 +117,15 @@ export default function CarouselComponent({ theme }:CarouselPorps) {
     };
   return (
     <Swiper
-        spaceBetween={35}
-        slidesPerView={3}
+        spaceBetween={isMobile ? 44 : 35}
+        slidesPerView={isMobile ? 1 : 3}
         loop={true}
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex)
         }}
         modules={[Navigation]}
         navigation
-        style={{ width: '1048px', height: '100%', padding: '35px' }}
+        style={{ maxWidth: '1048px', height: '100%', padding: '35px' }}
     >
       {
         LIST_SERVICES.map((service, index) => {

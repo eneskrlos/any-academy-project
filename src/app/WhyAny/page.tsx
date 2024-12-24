@@ -1,6 +1,6 @@
 'use client'
 import Title from '@/Components/Titles/Title'
-import {  Box, Grid2, Paper, useTheme } from '@mui/material'
+import {  Box, Grid2, Paper, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
 import ItemText from '@/Components/ItemText';
 import ButtonContainded from '@/Components/Buttons/ButtonContainded';
@@ -37,6 +37,7 @@ const LIST_TEXT = [
 
 export default function WhyAnyPage() {
   const theme = useTheme()
+  const isMobil = useMediaQuery("(max-width: 768px)")
   const lastElement = LIST_TEXT.length;
   return (
     <section style={{ width: '100%', height: 'auto' }} >
@@ -49,11 +50,11 @@ export default function WhyAnyPage() {
                   component={'h2'}
                   style={{
                     fontFamily: '"Quicksand", sans-serif',
-                    fontSize: '80px',
+                    fontSize: isMobil ? '60px' : '80px',
                     color: theme.palette.background.default,
                     fontWeight: '600',
-                    textAlign: 'left',
-                    lineHeight: '80px',
+                    textAlign: isMobil ? 'center': 'left',
+                    lineHeight: isMobil ? '60px' :'80px',
                     letterSpacing: '5px',
                     width: '100%',
                     textWrap: 'wrap',
@@ -62,8 +63,8 @@ export default function WhyAnyPage() {
                 />
               </Paper>
           </Grid2>
-          <Grid2 >
-            <Box sx={{ width: '100%', margin: '165px 70px 0px 0px ', columnGap: 2, marginBottom: '32px'}}>
+          <Grid2 sx={{ display:'grid', justifyContent: 'center' }} >
+            <Box sx={{ width: '100%', margin: '165px 40px 0px 0px ', columnGap: 2, marginBottom: '32px'}}>
               {
                 LIST_TEXT.map((lt, index) => {
                   

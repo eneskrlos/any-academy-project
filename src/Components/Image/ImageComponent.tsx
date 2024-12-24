@@ -18,6 +18,7 @@ export default function ImageComponet({ src, width, height, alt, priority = fals
       alt={alt}
       priority={priority}
       style={style || {}}
+      sizes='(max-width: 768px) 100vw, 33vw'
     />
   )
 }

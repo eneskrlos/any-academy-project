@@ -2,7 +2,7 @@
 import React from 'react'
 import Title from '@/Components/Titles/Title'
 import CarouselComponent from '@/Components/Slider/CarouselComponent'
-import { Grid2, Theme } from '@mui/material'
+import { Grid2, Theme, useMediaQuery } from '@mui/material'
 import ImageComponet from '@/Components/Image/ImageComponent'
 
 const styleArticle: React.CSSProperties = {
@@ -20,6 +20,7 @@ interface HomePorps {
 }
 
 export default function CursosView({ theme } : HomePorps) {
+    const isMobil = useMediaQuery("(max-width: 768px)")
   return (
 <section style={{ width: '100%', height: 'auto', display: 'flex', flexDirection: 'column',  justifyContent: 'center', alignItems: 'center'}}>
             <aside  style={{ marginBottom: '54px' }}>
@@ -51,7 +52,7 @@ export default function CursosView({ theme } : HomePorps) {
                             fontWeight: '400',
                             textAlign: 'center',
                             lineHeight: '30px',
-                            width: '952px',
+                            maxWidth: '952px',
                             textWrap: 'wrap',
                             position: 'relative',
                             left: '3%'
@@ -68,9 +69,11 @@ export default function CursosView({ theme } : HomePorps) {
                         <ImageComponet 
                             src='/resources/images/girl_with_books_and _backpack.png' 
                             alt='girl with books and  backpack' 
-                            width={498} 
-                            height={392}
-                            style={{}} 
+                            width={ isMobil ? 300 : 498} 
+                            height={isMobil? 290 : 392}
+                            style={{
+                                objectFit: 'contain'
+                            }} 
                             priority
                         />
                     </picture>
