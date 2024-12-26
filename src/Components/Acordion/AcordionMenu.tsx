@@ -30,10 +30,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
     {...props}
   />
 ))(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
+  backgroundColor:'rgba(0, 0, 0, .03)',
   flexDirection: 'row',
   paddingLeft: '7px',
   paddingRight: '0px',
