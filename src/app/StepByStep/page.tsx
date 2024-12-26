@@ -86,7 +86,7 @@ export default function StepByStepSection() {
             </Grid2>
             <Grid2 sx={{ 
                 position: 'relative',
-                bottom: '123px',
+                bottom: '115px',
                 right: '0px'
             }}>
                 <ImageComponet

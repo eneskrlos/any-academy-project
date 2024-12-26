@@ -17,7 +17,7 @@ export default function PaperComponent({ theme, title, description, step }: Pape
   return (
     <Paper
       sx={{
-        height: '100%',
+        height: '350px',
         width: '264px',
         backgroundColor: theme.palette.background.default,
         columnGap: 4
@@ -47,7 +47,7 @@ export default function PaperComponent({ theme, title, description, step }: Pape
             component={'p'}
             style={{
               fontFamily: '"Quicksand", sans-serif',
-              fontSize: isMobil ? '18px' : screamMedia ? '12px' : '18px',
+              fontSize: isMobil ? '18px' : screamMedia ? '15px' : '18px',
               color: theme.palette.text.secondary,
               fontWeight: '400',
               textAlign: isMobil ? 'center': 'left',
