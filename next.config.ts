@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',
   /* config options here */
   images: {
     formats: ["image/avif", "image/webp"],
     loader: 'default',
-    unoptimized: true,
+    // unoptimized: true,
     remotePatterns: [
       {
         protocol: 'http',
