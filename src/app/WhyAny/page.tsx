@@ -38,19 +38,19 @@ const LIST_TEXT = [
 export default function WhyAnyPage() {
   const theme = useTheme()
   const isMobil = useMediaQuery("(max-width: 768px)")
-  const isTable = useMediaQuery("(max-width: 920px)")
+  const isTable = useMediaQuery("(min-width: 769px) and (max-width: 920px)")
   const screamMedia = useMediaQuery("(min-width: 920px) and (max-width: 1540px)")
   const lastElement = LIST_TEXT.length;
   
   return (
     <section style={{ width: '100%', height: isMobil ? '1437px' : 'auto' }} >
-        <Grid2 style={isMobil ? { display: 'grid', gridTemplateRows: 'repeat(2, 1fr)', justifyContent: 'center', height: '100px' } : { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2 }} >
+        <Grid2 style={isMobil ? { display: 'grid', gridTemplateRows: 'repeat(2, 1fr)', justifyContent: 'center', height: '100px' } : { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: isTable ? 23 : 2 }} >
           <Grid2>
               <Paper elevation={3} 
               style={{ 
                 background: theme.palette.secondary.main, 
-                margin: isMobil ? '60px 5px 0px 10px' : screamMedia? '165px 48px 0px 38px' : '165px 96px 0px 143px ', 
-                padding: isMobil ? '32px 0px 50px 0px' : screamMedia ? '137px 34px 144px 22px' : '137px 34px 144px 78px' 
+                margin: isMobil ? '60px 5px 0px 10px'  : isTable? '165px 0px 0px 35px' : screamMedia? '165px 48px 0px 38px' : '165px 96px 0px 143px ', 
+                padding: isMobil ? '32px 0px 50px 0px' : isTable? '137px 34px 144px 9px' : screamMedia ? '137px 34px 144px 22px' : '137px 34px 144px 78px' 
                 }} >
                 <Title
                   text='¿Por qué aprender con  Any’s Language Academy?'
@@ -58,11 +58,11 @@ export default function WhyAnyPage() {
                   component={'h2'}
                   style={{
                     fontFamily: '"Quicksand", sans-serif',
-                    fontSize: isMobil ? '40px' : screamMedia ? '48px' : '80px',
+                    fontSize: isMobil ? '40px' : isTable? '60px': screamMedia ? '48px' : '80px',
                     color: theme.palette.background.default,
                     fontWeight: '600',
-                    textAlign: isMobil ? 'center': 'left',
-                    lineHeight: isMobil ? '40px' : screamMedia ? '50px' : '80px',
+                    textAlign: isMobil || isTable? 'center': 'left',
+                    lineHeight: isMobil ? '40px' : isTable? '100px' : screamMedia ? '50px' : '80px',
                     letterSpacing: isMobil ? '2px' : '5px',
                     width: '100%',
                     textWrap: 'wrap',
@@ -76,7 +76,8 @@ export default function WhyAnyPage() {
               width: '100%', 
               margin: isMobil ? '80px 40px 0px 20px' : '165px 40px 0px 0px ', 
               columnGap: 2, 
-              marginBottom: '32px'
+              marginBottom: '32px',
+              paddingRight: '23px'
               }}>
               {
                 LIST_TEXT.map((lt, index) => {

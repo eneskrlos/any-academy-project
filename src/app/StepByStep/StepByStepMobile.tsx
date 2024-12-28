@@ -5,12 +5,12 @@ import { Grid2, Theme } from '@mui/material'
 import React from 'react'
 
 const styleArticle: React.CSSProperties = {
-    marginTop: '80px',
+    marginTop: '120px',
     /* display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column', */
-    width: '100%',
+    maxWidth: '100%',
     height: 'auto',
 }
 
@@ -23,10 +23,11 @@ interface ListData {
 
 interface Props {
     theme: Theme,
-    listData: ListData[]
+    listData: ListData[],
+    isTablet: boolean
 }
 
-export default function StepByStepMobile({ theme, listData }:Props) {
+export default function StepByStepMobile({ theme, listData, isTablet }:Props) {
   return (
     <section style={{width: '100%', display:'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
         <Grid2>
@@ -37,12 +38,12 @@ export default function StepByStepMobile({ theme, listData }:Props) {
                 styleArticle={styleArticle} 
             />
         </Grid2>
-        <Grid2 >
+        <Grid2 sx={{ display: isTablet ? 'none': 'block' }} >
             <ImageComponet
                 src='/resources/images/young_man_with_laptop_on_chair.png'
                 alt='young man with laptop on chair'
-                width={122}
-                height={156}
+                width={isTablet ? 498 : 150}
+                height={isTablet ? 392 : 156}
                 priority={false} 
             />
         </Grid2>
@@ -53,8 +54,8 @@ export default function StepByStepMobile({ theme, listData }:Props) {
             <ImageComponet
                 src='/resources/images/young_smiling_woman_working_at_laptop.png'
                 alt='young smiling woman working at laptop'
-                width={150}
-                height={150}
+                width={isTablet ? 450 : 170}
+                height={isTablet? 350 : 150}
                 priority={false}
                 style={{ marginTop: '16%' }} 
             />

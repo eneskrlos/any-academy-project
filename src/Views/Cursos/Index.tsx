@@ -41,7 +41,8 @@ export default function CursosView({ theme } : HomePorps) {
                     maxWidth: '952px',
                     textWrap: 'wrap',
                     position: 'relative',
-                    left: '3%'
+                    left: '3%',
+                    paddingRight: isMobil? '23px' : '0px'
                 }}
             />
             <Grid2 sx={{ width: '100%', height: '365px' }}>

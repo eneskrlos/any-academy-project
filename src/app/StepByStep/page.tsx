@@ -36,17 +36,19 @@ const LIST_STEP_LANGUAGE = [
 export default function StepByStepSection() {
     const theme = useTheme()
     const isMobil = useMediaQuery("(max-width: 768px)")
+    const isTable = useMediaQuery("(min-width: 769px) and (max-width: 1200px)")
   return (
     
-    (isMobil) ? 
+    (isMobil || isTable) ? 
       <StepByStepMobile
         theme={theme}
         listData={LIST_STEP_LANGUAGE} 
+        isTablet={isTable}
       />
     :
     <StepByStepDesktop
         theme={theme}
-        listData={LIST_STEP_LANGUAGE} 
+        listData={LIST_STEP_LANGUAGE}
     />
   )
 }

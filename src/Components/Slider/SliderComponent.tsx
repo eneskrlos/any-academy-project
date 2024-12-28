@@ -2,7 +2,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
-import { Pagination /* , Autoplay */ } from 'swiper/modules';
+import { Pagination , Autoplay } from 'swiper/modules';
 import { Grid2, useMediaQuery } from '@mui/material';
 import './styleSlider.css'
 import SlideContent from './SliderContent';
@@ -12,14 +12,14 @@ import SlideContent from './SliderContent';
 const SwiperComppnent = () => {
     const isMobil = useMediaQuery("(max-width: 768px)")
     return (
-        <section style={{ width: '100%', height: 'auto' }}>
+        <section style={{ width: '100%', minHeight: isMobil ? 'auto' : '700px' }}>
             <Grid2 sx={{ width: '100%', height: '100%', background: '#6A9EDA'}}>
                 <Swiper
                     spaceBetween={50}
                     slidesPerView={1}
                     loop={true}
-                    modules={[Pagination /* , Autoplay */]}
-                    // autoplay={{ delay: 5000 }}
+                    modules={[Pagination, Autoplay ]}
+                    autoplay={{ delay: 5000 }}
                     pagination={{ clickable: true }}
                     style={{ width: '100%', height: '100%' }}
                 >

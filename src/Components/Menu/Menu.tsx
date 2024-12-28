@@ -156,6 +156,8 @@ export default function CustomizedMenus({text, theme}: {text: string, theme: The
             color: theme.palette.secondary.main,
             transition: 'transform 0.3s ease',
             transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+            marginTop: '5px',
+            fontSize: '18px'
           }} 
          />
       </Link>
@@ -182,9 +184,9 @@ export default function CustomizedMenus({text, theme}: {text: string, theme: The
           'aria-labelledby': 'submenu-button',
         }}
       >
-        <MenuItemCustom text='Principiante' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
-        <MenuItemCustom text='Intermedio' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
-        <MenuItemCustom text='Avanzado' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
+        <MenuItemCustom text='Inglés' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
+        <MenuItemCustom text='Italiano' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
+        <MenuItemCustom text='Español' menuItemStyle={MENU_ITEM_STYLE} handleClickSubmenu={handleSubmenuClose} />
       </StyledSubMenu>
     </>
   );

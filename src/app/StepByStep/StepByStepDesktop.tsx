@@ -10,7 +10,7 @@ const styleArticle: React.CSSProperties = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column', */
-    width: '100%',
+    maxWidth: '100%',
     height: 'auto',
 }
 
@@ -68,7 +68,7 @@ export default function StepByStepDesktop({ theme, listData }:Props) {
             </Grid2>
             <Grid2 sx={{ 
                 position: 'relative',
-                bottom: '115px',
+                bottom: '70px',
                 right: '0px'
             }}>
                 <ImageComponet
