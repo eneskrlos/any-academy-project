@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     loader: 'default',
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'http',
