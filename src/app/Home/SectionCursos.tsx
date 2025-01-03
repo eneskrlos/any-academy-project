@@ -2,7 +2,7 @@
 import React from 'react'
 // import Title from '@/Components/Titles/Title'
 import CarouselComponent from '@/Components/Slider/CarouselComponent'
-import { Grid2, Theme, useMediaQuery } from '@mui/material'
+import { Grid2, useMediaQuery, useTheme } from '@mui/material'
 import ImageComponet from '@/Components/Image/ImageComponent'
 import HeadSectionComponent from '@/Components/HeadSection'
 
@@ -16,11 +16,9 @@ const styleArticle: React.CSSProperties = {
     height: 'auto',
 }
 
-interface HomePorps {
-    theme: Theme
-}
 
-export default function CursosView({ theme } : HomePorps) {
+export default function SectionCursos() {
+  const theme =  useTheme()
     const isMobil = useMediaQuery("(max-width: 768px)")
   return (
 <section style={{ width: '100%', height: 'auto', display: 'flex', flexDirection: 'column',  justifyContent: 'center', alignItems: 'center'}}>

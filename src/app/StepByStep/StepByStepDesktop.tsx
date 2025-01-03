@@ -37,7 +37,7 @@ export default function StepByStepDesktop({ theme, listData }:Props) {
                 styleArticle={styleArticle} 
               />
         </Grid2>
-        <Grid2 sx={{ display:'grid', gridTemplateColumns: '322px 1fr 322px'}}>
+        <Grid2 sx={{ display:'grid', gridTemplateColumns: '0.2fr 1fr 0.2fr'}}>
             <Grid2 sx={{ 
                 position: 'relative',
                 top: '295px',
@@ -46,8 +46,8 @@ export default function StepByStepDesktop({ theme, listData }:Props) {
                 <ImageComponet
                   src='/resources/images/young_smiling_woman_working_at_laptop.png'
                   alt='young smiling woman working at laptop'
-                  width={271}
-                  height={235}
+                  width={210}
+                  height={210}
                   priority={false} 
                 />
             </Grid2>
@@ -74,8 +74,8 @@ export default function StepByStepDesktop({ theme, listData }:Props) {
                 <ImageComponet
                   src='/resources/images/young_man_with_laptop_on_chair.png'
                   alt='young man with laptop on chair'
-                  width={322}
-                  height={356}
+                  width={200}
+                  height={270}
                   priority={false} 
                 />
             </Grid2>

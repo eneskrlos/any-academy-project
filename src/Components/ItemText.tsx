@@ -32,8 +32,8 @@ export default function ItemText({ theme, sx, text, lineVertical, isMobil, screa
         <Grid2 sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
             <Box sx={{ 
                 background: theme.palette.secondary.main, 
-                width: isMobil ? '50px' : '70px', 
-                height: isMobil ? '50px' : '70px', 
+                width: isMobil ? '50px' : '50px', 
+                height: isMobil ? '50px' : '50px', 
                 borderRadius: '50%', 
                 display: 'flex', 
                 justifyContent: 'center', 
@@ -44,7 +44,7 @@ export default function ItemText({ theme, sx, text, lineVertical, isMobil, screa
             > 
                 <CheckIcon fontSize={'medium'} />
             </Box>
-            {lineVertical || <LineaVertical color={theme.palette.secondary.main} height={ isMobil ? '100px' : '52px'} /> } 
+            {lineVertical || <LineaVertical color={theme.palette.secondary.main} height={ isMobil ? '100px' : '18vh'} /> } 
         </Grid2>
         <Grid2>
             <Title

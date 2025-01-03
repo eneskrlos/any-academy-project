@@ -2,7 +2,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
-import { Pagination , Autoplay } from 'swiper/modules';
+import { Pagination /* , Autoplay */ } from 'swiper/modules';
 import { Grid2, useMediaQuery } from '@mui/material';
 import './styleSlider.css'
 import SlideContent from './SliderContent';
@@ -18,8 +18,8 @@ const SwiperComppnent = () => {
                     spaceBetween={50}
                     slidesPerView={1}
                     loop={true}
-                    modules={[Pagination, Autoplay ]}
-                    autoplay={{ delay: 5000 }}
+                    modules={[Pagination /* , Autoplay */ ]}
+                    // autoplay={{ delay: 5000 }}
                     pagination={{ clickable: true }}
                     style={{ width: '100%', height: '100%' }}
                 >

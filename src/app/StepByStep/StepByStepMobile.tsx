@@ -54,8 +54,8 @@ export default function StepByStepMobile({ theme, listData, isTablet }:Props) {
             <ImageComponet
                 src='/resources/images/young_smiling_woman_working_at_laptop.png'
                 alt='young smiling woman working at laptop'
-                width={isTablet ? 450 : 170}
-                height={isTablet? 350 : 150}
+                width={isTablet ? 350 : 170}
+                height={isTablet? 250 : 150}
                 priority={false}
                 style={{ marginTop: '16%' }} 
             />
