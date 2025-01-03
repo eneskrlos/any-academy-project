@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  basePath: '/any-academy-dev',
   output: "export",
   // distDir: "dist",
   trailingSlash: true,
