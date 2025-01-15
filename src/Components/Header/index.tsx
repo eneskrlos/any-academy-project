@@ -4,6 +4,7 @@ import ComponentLogo from "./ComponentLogo";
 import NavComponent from "./NavComponent";
 import NavMobile from "./NavMobile";
 import { useMediaQuery } from "@mui/material";
+import ScrollToTopButton from "../Buttons/ScrollToTopButton";
 
 
 export default function Header() {
@@ -25,6 +26,7 @@ export default function Header() {
       <ComponentLogo />
       {isMobile && <NavMobile />}
       {!isMobile && <NavComponent />}
+      <ScrollToTopButton />
     </header>
   );
 }

@@ -52,7 +52,7 @@ export default function NavComponent() {
         <Ul>
           <li>
             <LinkButton 
-              href="#" 
+              href="/" 
               variant="inherit"
               underline="none"
               style={linkStyle}
@@ -64,7 +64,7 @@ export default function NavComponent() {
           </li>
           <li>
             <LinkButton 
-              href="#" 
+              href="#sobreAny" 
               variant="inherit"
               underline="none"
               style={linkStyle}

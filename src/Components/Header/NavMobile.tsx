@@ -51,7 +51,7 @@ export default function NavMobile() {
       const toggleDrawer =
         (open: boolean) =>
         (event: React.KeyboardEvent | React.MouseEvent) => {
-            console.log('aqui')
+            
           if (
             event &&
             event.type === 'keydown' &&
@@ -90,7 +90,7 @@ export default function NavMobile() {
                 <ListItem key={'Sobre Any'}  disablePadding>
                     <ListItemButton onClick={toggleDrawer(false)}>
                       <LinkButton 
-                        href="#" 
+                        href="#sobreAny" 
                         variant="inherit"
                         underline="none"
                         style={STYLE_LIST(theme)}

@@ -6,11 +6,12 @@ interface ButtonIconProps {
   ariaLabel: string;
   icon: React.ReactNode;
   onClick: () => void;
+  className?: string | undefined
 }
 
-export default function ButtonIcon({style, icon, ariaLabel , onClick }:ButtonIconProps) {
+export default function ButtonIcon({style, icon, ariaLabel , onClick, className }:ButtonIconProps) {
   return (
-    <IconButton style={style} aria-label={ariaLabel} onClick={onClick}>
+    <IconButton className={className} style={style} aria-label={ariaLabel} onClick={onClick}>
       {icon}
     </IconButton>
   )
