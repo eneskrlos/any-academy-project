@@ -5,6 +5,7 @@ import SectionCursos from "@/app/Cursos/page";
 import WhyAnyPage from '../WhyAny/page';
 import StepByStepSection from '../StepByStep/page';
 
+
 export default function IndexPage() {
   return (
     <>

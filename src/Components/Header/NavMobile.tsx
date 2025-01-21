@@ -13,6 +13,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import LinkButton from '../Buttons/LinkButton';
 import AcordionMenu from '../Acordion/AcordionMenu';
+import ModalContact from '../Modals/ModalContact';
 
 
 const STYLE_BUTTOM_ICON = (theme: Theme) => ({
@@ -63,6 +64,10 @@ export default function NavMobile() {
     
           setState(open);
         };
+
+        const [openModal, setOpenModal] = React.useState(false);
+        const handleOpenModal = () => setOpenModal(true);
+        const handleCloseModal = () => setOpenModal(false);
     
       const list = () => (
         <Box
@@ -76,7 +81,7 @@ export default function NavMobile() {
                 <ListItem key={'Inicio'} disablePadding>
                   <ListItemButton onClick={toggleDrawer(false)}>
                     <LinkButton 
-                      href="#" 
+                      href="/" 
                       variant="inherit"
                       underline="none"
                       style={STYLE_LIST(theme)}
@@ -98,7 +103,7 @@ export default function NavMobile() {
                       / >
                     </ListItemButton>
                 </ListItem>
-                <ListItem key={'Contacto'}  disablePadding>
+                <ListItem key={'Contacto'}  disablePadding onClick={handleOpenModal} >
                     <ListItemButton onClick={toggleDrawer(false)}>
                       <LinkButton 
                         href="#" 
@@ -144,6 +149,7 @@ export default function NavMobile() {
           </SwipeableDrawer>
         
         </div>
+        <ModalContact theme={theme} open={openModal} handleClose={handleCloseModal} />
     </>
   )
 }

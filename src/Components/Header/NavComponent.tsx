@@ -5,6 +5,7 @@ import { Link } from '@mui/material';
 import { Theme, useTheme } from '@mui/material/styles';
 
 import { styled } from '@mui/material/styles';
+import ModalContact from '../Modals/ModalContact';
 
 const Nav = styled('nav')({
   paddingRight: '5%',
@@ -47,7 +48,11 @@ export default function NavComponent() {
   const theme = useTheme();
   const linkStyle = LINK_STYLE(theme)
   const linkButtomStyle = LINK_STYLE_BUTTOM(theme)
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
+    <>
     <Nav>
         <Ul>
           <li>
@@ -77,14 +82,14 @@ export default function NavComponent() {
                 variant="inherit"
                 underline="none"
                 style={linkButtomStyle}
-                onClick={() => {
-                    console.info("I'm a button.");
-                }}
+                onClick={handleOpen}
                 >
                 Contacto
             </Link>
           </li>
         </Ul>
       </Nav>
+      <ModalContact theme={theme} open={open} handleClose={handleClose} />
+    </>
   )
 }
