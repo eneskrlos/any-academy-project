@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import Modal from '@mui/material/Modal';
-import { Box, Grid2, Theme, useMediaQuery } from '@mui/material';
+import { Box, Chip, Divider, Grid2,  Theme, useMediaQuery } from '@mui/material';
 import Title from '../Titles/Title';
 import TexFieldBasic from '../textField/TexFieldBasic';
 import ButtonContainded from '../Buttons/ButtonContainded';
+import BoxFooterModal from './BoxFooterModal';
 
 const style = (theme: Theme) => ({
   position: 'absolute',
@@ -12,7 +13,7 @@ const style = (theme: Theme) => ({
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 'auto',
-  bgcolor: theme.palette.background.paper,
+  bgcolor: theme.palette.background.default,
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -20,7 +21,7 @@ const style = (theme: Theme) => ({
 
 const styleBox = (theme: Theme) => ({
     // maxWidth: '760px',
-    bgcolor: theme.palette.background.paper,
+    bgcolor: theme.palette.background.default,
     display:'flex',
     flexDirection:'column',
     justifyContent: 'center',
@@ -132,10 +133,9 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     }} 
                 />
                 <ButtonContainded sx={{ 
-                    background: '#F6F6F6',
+                    background: theme.palette.background.paper,
                     width: '50%',
-                    height: '56px',
-                    marginTop: '61px'
+                    height: '56px'
                  }}>
                     <Title
                         text='Enviar'
@@ -156,6 +156,29 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     />
                 </ButtonContainded>
             </Box>
+            <footer>
+                <Divider>
+                    <Chip label="O" size="small" />
+                </Divider>
+                <BoxFooterModal
+                    theme={theme}
+                    textImage={{
+                        src: '/resources/images/Phone.png',
+                        alt: 'Phone',
+                        text: 'Lamanos'
+                    }}
+                    subTitle='+1 (305) 607-6884' 
+                />
+                <BoxFooterModal
+                    theme={theme}
+                    textImage={{
+                        src: '/resources/images/Mail.png',
+                        alt: 'Mail',
+                        text: 'Correo'
+                    }}
+                    subTitle='anyslacademy@gmail.com ' 
+                />
+            </footer>
         </Grid2>
     </Modal>
   );
