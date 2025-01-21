@@ -12,13 +12,14 @@ interface textImageProps {
 interface BoxFooterModalProps {
     theme: Theme,
     textImage: textImageProps,
-    subTitle: string 
+    subTitle: string,
+    isMobil: boolean
 }
 
-export default function BoxFooterModal({ theme, textImage, subTitle } : BoxFooterModalProps) {
+export default function BoxFooterModal({ theme, textImage, subTitle, isMobil } : BoxFooterModalProps) {
     const { text, src, alt } = textImage
     return (
-    <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+    <Box display={'flex'} flexDirection={isMobil? 'column': 'row'} justifyContent={ isMobil? 'center' : 'space-between' } alignItems={'center'}>
         <TitleImage
             text={text}
             src={src}
@@ -34,7 +35,7 @@ export default function BoxFooterModal({ theme, textImage, subTitle } : BoxFoote
                 fontSize: '20px',
                 color: theme.palette.text.secondary,
                 fontWeight: '400',
-                textAlign: 'right',
+                textAlign: isMobil? 'center' : 'right',
                 lineHeight: '24px',
                 width: '100%',
                 textWrap: 'wrap'

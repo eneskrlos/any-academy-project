@@ -6,15 +6,16 @@ import Title from '../Titles/Title';
 import TexFieldBasic from '../textField/TexFieldBasic';
 import ButtonContainded from '../Buttons/ButtonContainded';
 import BoxFooterModal from './BoxFooterModal';
+import CloseIcon from '@mui/icons-material/Close';
 
-const style = (theme: Theme) => ({
-  position: 'absolute',
+const style = (theme: Theme, isMobil: boolean) => ({
+  position: isMobil? 'fixed' : 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 'auto',
   bgcolor: theme.palette.background.default,
-  border: '2px solid #000',
+  border: `2px solid ${theme.palette.common.white}`,
   boxShadow: 24,
   p: 4,
 })
@@ -26,9 +27,9 @@ const styleBox = (theme: Theme) => ({
     flexDirection:'column',
     justifyContent: 'center',
     alignItems:'center',
-    gap: 4,
-    marginTop: '60px',
-    marginBottom: '60px'
+    gap: 2,
+    marginTop: '40px',
+    marginBottom: '40px'
   })
 
 interface ModalContactProps {
@@ -46,8 +47,24 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
     onClose={handleClose}
     aria-labelledby="modal-modal-title"
     aria-describedby="modal-modal-description"
+    style={{
+        width: '100%',
+        margin: '2rem' 
+    }}
     >
-        <Grid2 sx={style}>
+        
+        <Grid2 sx={style(theme, isMobil)}>
+        {
+           isMobil && <div style={{
+                position: 'absolute',
+                top: '2%',
+                right: '10%',
+                width: '20px',
+            
+            }}>
+                <CloseIcon color={'primary'} onClick={handleClose} />
+            </div>
+        }
             <header>
                 <>
                     <Title
@@ -64,21 +81,25 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                             textWrap: 'wrap'
                         }}
                     />
-                    <article style={{ marginTop: '32px' }}>
-                        <Title text={`Estamos aquí para orientarte. Si necesitas más información sobre nuestros servicios, 
-                        contáctanos mediante el formulario y te responderemos lo antes posible. `} 
-                            variant='subtitle1' component={'p'} style={{
-                            fontFamily: '"Quicksand", sans-serif',
-                            fontSize: isMobil? '18px' : '22px',
-                            color: theme.palette.text.primary,
-                            fontWeight: '300',
-                            textAlign:'center',
-                            lineHeight: isMobil? '20px' :'30px',
-                            maxWidth: '560px',
-                            height: '84px',
-                            textWrap: 'wrap'
-                        }} />
-                    </article>
+                    {
+                        isMobil ?
+                        <></> :
+                        <article style={{ marginTop: '15px' }}>
+                            <Title text={`Estamos aquí para orientarte. Si necesitas más información sobre nuestros servicios, 
+                            contáctanos mediante el formulario y te responderemos lo antes posible. `} 
+                                variant='subtitle1' component={'p'} style={{
+                                fontFamily: '"Quicksand", sans-serif',
+                                fontSize: isMobil? '18px' : '22px',
+                                color: theme.palette.text.primary,
+                                fontWeight: '300',
+                                textAlign:'center',
+                                lineHeight: isMobil? '20px' :'30px',
+                                width: '560px',
+                                height: 'auto',
+                                textWrap: 'wrap'
+                            }} />
+                        </article>
+                    }
                 </>
             </header>
             <Box sx={styleBox} >
@@ -90,8 +111,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     variant='outlined' 
                     style={{ 
                         border: theme.palette.primary.main,
-                        maxWidth: '700px',
-                        minWidth: '350px'
+                        width: isMobil? '300px' :  '350px'
                     }} 
                 />
                 <TexFieldBasic 
@@ -102,8 +122,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     variant='outlined' 
                     style={{ 
                         border: theme.palette.primary.main,
-                        maxWidth: '700px',
-                        minWidth: '350px'
+                        width: isMobil? '300px' :'350px'
                     }} 
                 />
                 <TexFieldBasic 
@@ -114,8 +133,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     variant='outlined' 
                     style={{ 
                         border: theme.palette.primary.main,
-                        maxWidth: '700px',
-                        minWidth: '350px'
+                        width:isMobil? '300px' : '350px'
                     }} 
                 />
                 <TexFieldBasic 
@@ -128,8 +146,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     variant='outlined' 
                     style={{ 
                         border: theme.palette.primary.main,
-                        maxWidth: '700px',
-                        minWidth: '350px'
+                        width:isMobil? '300px' : '350px'
                     }} 
                 />
                 <ButtonContainded sx={{ 
@@ -167,7 +184,8 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                         alt: 'Phone',
                         text: 'Lamanos'
                     }}
-                    subTitle='+1 (305) 607-6884' 
+                    subTitle='+1 (305) 607-6884'
+                    isMobil={isMobil} 
                 />
                 <BoxFooterModal
                     theme={theme}
@@ -176,7 +194,8 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                         alt: 'Mail',
                         text: 'Correo'
                     }}
-                    subTitle='anyslacademy@gmail.com ' 
+                    subTitle='anyslacademy@gmail.com '
+                    isMobil={isMobil} 
                 />
             </footer>
         </Grid2>
