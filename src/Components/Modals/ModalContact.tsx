@@ -4,9 +4,9 @@ import Modal from '@mui/material/Modal';
 import { Box, Chip, Divider, Grid2,  Theme, useMediaQuery } from '@mui/material';
 import Title from '../Titles/Title';
 import TexFieldBasic from '../textField/TexFieldBasic';
-import ButtonContainded from '../Buttons/ButtonContainded';
 import BoxFooterModal from './BoxFooterModal';
 import CloseIcon from '@mui/icons-material/Close';
+import ButtonContact from '../Buttons/ButtonContact';
 
 const style = (theme: Theme, isMobil: boolean) => ({
   position: isMobil? 'fixed' : 'absolute',
@@ -149,29 +149,10 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                         width:isMobil? '300px' : '350px'
                     }} 
                 />
-                <ButtonContainded sx={{ 
-                    background: theme.palette.background.paper,
-                    width: '50%',
-                    height: '56px'
-                 }}>
-                    <Title
-                        text='Enviar'
-                        variant='h2'
-                        component={'h2'}
-                        style={{
-                        fontFamily: '"Quicksand", sans-serif',
-                        fontSize: '22px',
-                        color: '#A9ACAF',
-                        fontWeight: '600',
-                        textAlign: 'center',
-                        lineHeight: '20px',
-                        width: '100%',
-                        textWrap: 'wrap',
-                        textTransform: 'capitalize'
-                        
-                        }} 
-                    />
-                </ButtonContainded>
+                <ButtonContact
+                    textButton='Enviar'
+                    theme={theme} 
+                />
             </Box>
             <footer>
                 <Divider>
