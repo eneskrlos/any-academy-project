@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material'
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 
 interface TextFieldProps {
     id: string,
@@ -9,10 +9,12 @@ interface TextFieldProps {
     required: boolean,
     fullWidth: boolean,
     multiline?: boolean,
-    rows?: number
+    rows?: number,
+    value?: string,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement> ) => void 
 }
 
-export default function TexFieldBasic({ id, label, variant, style, required, fullWidth, multiline, rows }:TextFieldProps) {
+export default function TexFieldBasic({ id, label, variant, style, required, fullWidth, multiline, rows, value, onChange }:TextFieldProps) {
   return (
     <TextField 
         id={id}
@@ -23,6 +25,8 @@ export default function TexFieldBasic({ id, label, variant, style, required, ful
         style={style}
         multiline={multiline}
         rows={rows}
+        value={value}
+        onChange={onChange}
     />
   )
 }

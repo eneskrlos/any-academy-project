@@ -3,10 +3,11 @@ import * as React from 'react';
 import Modal from '@mui/material/Modal';
 import { Box, Chip, Divider, Grid2,  Theme, useMediaQuery } from '@mui/material';
 import Title from '../Titles/Title';
-import TexFieldBasic from '../textField/TexFieldBasic';
+// import TexFieldBasic from '../textField/TexFieldBasic';
 import BoxFooterModal from './BoxFooterModal';
 import CloseIcon from '@mui/icons-material/Close';
 import ButtonContact from '../Buttons/ButtonContact';
+import useFormFields from '@/hooks/useFormFields';
 
 const style = (theme: Theme, isMobil: boolean) => ({
   position: isMobil? 'fixed' : 'absolute',
@@ -39,8 +40,9 @@ interface ModalContactProps {
 }
 
 export default function ModalContact({ theme, open, handleClose } : ModalContactProps) {
-  
-  const isMobil = useMediaQuery("(max-width: 768px)")
+    const isMobil = useMediaQuery("(max-width: 768px)")
+    const fieldsToRender: string [] = ['nombre', 'telefono', 'correo', 'sms'];
+    const { renderFields } = useFormFields({ isMobil, theme, fieldsToRender })
   return (
     <Modal
     open={open}
@@ -103,52 +105,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                 </>
             </header>
             <Box sx={styleBox} >
-                <TexFieldBasic 
-                    id='nombre' 
-                    label='Nombre' 
-                    required 
-                    fullWidth={false}
-                    variant='outlined' 
-                    style={{ 
-                        border: theme.palette.primary.main,
-                        width: isMobil? '300px' :  '350px'
-                    }} 
-                />
-                <TexFieldBasic 
-                    id='telefono' 
-                    label='Télefono' 
-                    required 
-                    fullWidth={false}
-                    variant='outlined' 
-                    style={{ 
-                        border: theme.palette.primary.main,
-                        width: isMobil? '300px' :'350px'
-                    }} 
-                />
-                <TexFieldBasic 
-                    id='correo' 
-                    label='Correo Electrónico' 
-                    required 
-                    fullWidth={false}
-                    variant='outlined' 
-                    style={{ 
-                        border: theme.palette.primary.main,
-                        width:isMobil? '300px' : '350px'
-                    }} 
-                />
-                <TexFieldBasic 
-                    id='sms' 
-                    label='Mensaje' 
-                    required 
-                    fullWidth={false}
-                    multiline
-                    rows={4}
-                    variant='outlined' 
-                    style={{ 
-                        border: theme.palette.primary.main,
-                        width:isMobil? '300px' : '350px'
-                    }} 
-                />
+                {renderFields()}
                 <ButtonContact
                     textButton='Enviar'
                     theme={theme} 
