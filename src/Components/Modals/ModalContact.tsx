@@ -43,6 +43,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
     const isMobil = useMediaQuery("(max-width: 768px)")
     const fieldsToRender: string [] = ['nombre', 'telefono', 'correo', 'sms'];
     const { renderFields } = useFormFields({ isMobil, theme, fieldsToRender })
+    
   return (
     <Modal
     open={open}
@@ -109,6 +110,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                 <ButtonContact
                     textButton='Enviar'
                     theme={theme} 
+                    closeModal={handleClose}
                 />
             </Box>
             <footer>

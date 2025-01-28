@@ -1,6 +1,8 @@
+import React from 'react'
 import TexFieldBasic from '@/Components/textField/TexFieldBasic';
+// import { User } from '@/interfaces/user';
+import { storeUser } from '@/store/storeUser';
 import { Theme } from '@mui/material';
-import React, { useState } from 'react'
 
 interface UseFormFieldsProps {
     isMobil: boolean,
@@ -9,16 +11,19 @@ interface UseFormFieldsProps {
 }
 
 const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
-    const [fields, setFields] = useState({
-        nombre: '',
-        telefono: '',
-        correo: '',
-        sms: ''
-    })
+    /* const [fields, setFields] = useState<User>({
+        name: '',
+        phone: '',
+        email: '',
+        message: ''
+    }) */
+    const user = storeUser(state => state.user)
+    const updateUser = storeUser( state => state.updateUser );
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { id,  value} = e.target;
-        setFields({ ...fields, [id]: value})
+        const { name,  value} = e.target;
+        // setFields({ ...fields, [name]: value})
+        updateUser({ ...user, [name]: value})
     };
 
     const renderFields = () => {
@@ -27,7 +32,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
             fieldComponent.push(
                 <TexFieldBasic
                 key={`nombre`} 
-                id='nombre' 
+                id='nombre'
+                name='name' 
                 label='Nombre' 
                 required 
                 fullWidth={false}
@@ -37,7 +43,7 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                     width: isMobil? '300px' :  '350px'
                 }}
                 onChange={handleChange}
-                value={fields.nombre} 
+                value={user.name} 
             />
             )
         }
@@ -45,7 +51,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
             fieldComponent.push(
                 <TexFieldBasic
                 key={`telefono`} 
-                id='telefono' 
+                id='telefono'
+                name='phone' 
                 label='Télefono' 
                 required 
                 fullWidth={false}
@@ -55,7 +62,7 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                     width: isMobil? '300px' :'350px'
                 }}
                 onChange={handleChange}
-                value={fields.telefono} 
+                value={user.phone} 
             />
             )
         }
@@ -63,7 +70,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
             fieldComponent.push(
                 <TexFieldBasic
                 key={`correo`} 
-                id='correo' 
+                id='correo'
+                name='email' 
                 label='Correo Electrónico' 
                 required 
                 fullWidth={false}
@@ -73,7 +81,7 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                     width:isMobil? '300px' : '350px'
                 }} 
                 onChange={handleChange}
-                value={fields.correo}
+                value={user.email}
             />
             )
         }
@@ -82,6 +90,7 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                 <TexFieldBasic
                 key={`sms`} 
                 id='sms' 
+                name='message'
                 label='Mensaje' 
                 required 
                 fullWidth={false}
@@ -93,7 +102,7 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                     width:isMobil? '300px' : '350px'
                 }} 
                 onChange={handleChange}
-                value={fields.sms}
+                value={user.message}
             />
             )
         }
@@ -101,7 +110,7 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
         
         return fieldComponent;
     }    
-  return { fields, renderFields}
+  return { user, renderFields}
 }
 
 export default useFormFields;

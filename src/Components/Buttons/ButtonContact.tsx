@@ -3,22 +3,27 @@ import React from 'react'
 import ButtonContainded from './ButtonContainded'
 import { Theme } from '@mui/material'
 import Title from '../Titles/Title'
-import { useUserContact } from '@/store/userContact'
+import { storeUser } from '@/store/storeUser'
 
 interface ButtonProps {
     theme: Theme,
-    textButton: string
+    textButton: string,
+    closeModal: () => void
 }
 
-export default function ButtonContact({ theme, textButton }:ButtonProps) {
+export default function ButtonContact({ theme, textButton, closeModal }:ButtonProps) {
     
     const {
-        user
-    } = useUserContact()
+        user,
+        clearUser
+    } = storeUser()
     
     const sendMessage = () => {
         console.log(user)
+        clearUser()
+        closeModal()
     }
+    
   return (
     <ButtonContainded sx={{ 
         background: theme.palette.background.paper,

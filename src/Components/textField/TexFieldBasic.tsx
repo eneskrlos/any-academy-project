@@ -4,6 +4,7 @@ import React, { ChangeEvent } from 'react'
 interface TextFieldProps {
     id: string,
     label: string,
+    name: string
     variant: 'filled' | 'outlined' | 'standard',
     style: React.CSSProperties,
     required: boolean,
@@ -14,10 +15,11 @@ interface TextFieldProps {
     onChange?: (e: React.ChangeEvent<HTMLInputElement> ) => void 
 }
 
-export default function TexFieldBasic({ id, label, variant, style, required, fullWidth, multiline, rows, value, onChange }:TextFieldProps) {
+export default function TexFieldBasic({ id, name, label, variant, style, required, fullWidth, multiline, rows, value, onChange }:TextFieldProps) {
   return (
     <TextField 
         id={id}
+        name={name}
         required={required}
         fullWidth={fullWidth}
         label={label}
