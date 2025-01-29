@@ -4,6 +4,7 @@ import React from 'react'
 import SectionCursos from "@/app/Cursos/page";
 import WhyAnyPage from '../WhyAny/page';
 import StepByStepSection from '../StepByStep/page';
+import SectionFirstStep from '../FirstStep/SectionFirstStep'
 
 
 export default function IndexPage() {
@@ -15,6 +16,7 @@ export default function IndexPage() {
         <SectionCursos />
         <WhyAnyPage />
         <StepByStepSection />
+        <SectionFirstStep /> 
       </main>
       <footer>
       </footer>
