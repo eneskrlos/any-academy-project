@@ -6,6 +6,7 @@ import WhyAnyPage from '../WhyAny/page';
 import StepByStepSection from '../StepByStep/page';
 import SectionFirstStep from '../FirstStep/SectionFirstStep'
 import HowIsAny from '../HowIsAny/page';
+import Opinions from '../Opinions/page';
 
 
 export default function IndexPage() {
@@ -18,7 +19,8 @@ export default function IndexPage() {
         <WhyAnyPage />
         <StepByStepSection />
         <SectionFirstStep />
-        <HowIsAny /> 
+        <HowIsAny />
+        <Opinions /> 
       </main>
       <footer>
       </footer>
