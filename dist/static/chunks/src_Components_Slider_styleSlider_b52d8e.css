@@ -1,0 +1,32 @@
+/* [project]/src/Components/Slider/styleSlider.css [app-client] (css) */
+.swiper-pagination-bullet-active {
+  background: #fff;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px #0003;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+  color: #00f;
+  font-size: 20px;
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+/*# sourceMappingURL=src_Components_Slider_styleSlider_b52d8e.css.map*/
