@@ -5,6 +5,7 @@ import SectionCursos from "@/app/Cursos/page";
 import WhyAnyPage from '../WhyAny/page';
 import StepByStepSection from '../StepByStep/page';
 import SectionFirstStep from '../FirstStep/SectionFirstStep'
+import HowIsAny from '../HowIsAny/page';
 
 
 export default function IndexPage() {
@@ -16,7 +17,8 @@ export default function IndexPage() {
         <SectionCursos />
         <WhyAnyPage />
         <StepByStepSection />
-        <SectionFirstStep /> 
+        <SectionFirstStep />
+        <HowIsAny /> 
       </main>
       <footer>
       </footer>
