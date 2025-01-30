@@ -43,7 +43,7 @@ export default function WhyAnyPage() {
   const lastElement = LIST_TEXT.length;
   
   return (
-    <section id="sobreAny" style={{ width: '100%', height: isMobil ? '1437px' : 'auto' }} >
+    <section style={{ width: '100%', height: isMobil ? '1437px' : 'auto' }} >
         <Grid2 style={isMobil ? { display: 'grid', gridTemplateRows: 'repeat(2, 1fr)', justifyContent: 'center', height: '100px' } : { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: isTable ? 23 : 2 }} >
           <Grid2>
               <Paper elevation={3} 
