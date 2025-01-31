@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 12, "column": 0}, "map": {"version":3,"sources":["file:///home/ernesto/ernes/documentos/anys_proyect/any-academy-project/src/app/theme/index.tsx"],"sourcesContent":["'use client'\nimport React, { ReactNode } from 'react'\nimport palette from './palette.json'\nimport { createTheme, ThemeProvider } from '@mui/material';\n\ninterface Props {\n    children: ReactNode;\n}\n\ninterface ThemeType {\n  palette: {\n    common: {\n      black: string,\n      white: string\n    },\n    primary: {\n      main: string;\n    };\n    secondary: {\n      main: string;\n    };\n    background: {\n      paper: string;\n      default: string;\n    };\n    error: {\n      light: string,\n      main: string,\n      dark: string,\n      contrastText: string\n    },\n    text: {\n      primary: string,\n      secondary: string,\n      disabled: string\n    }\n  };\n}\n\nconst theme = createTheme({\n    palette\n  } as ThemeType)\n\nexport default function Theme({ children }:Props) {\n  return (\n    <ThemeProvider theme={theme} key={theme.palette.primary.main}>\n        {children}\n      </ThemeProvider>\n  )\n}\n"],"names":[],"mappings":";;;;AAEA;AACA;AAAA;AAHA;;;;AAuCA,MAAM,QAAQ,CAAA,GAAA,uMAAA,CAAA,cAAW,AAAD,EAAE;IACtB,SAAA,sGAAA,CAAA,UAAO;AACT;AAEa,SAAS,MAAM,EAAE,QAAQ,EAAQ;IAC9C,qBACE,6LAAC,2MAAA,CAAA,gBAAa;QAAC,OAAO;kBACjB;OAD6B,MAAM,OAAO,CAAC,OAAO,CAAC,IAAI;;;;;AAIhE;KANwB"}},
-    {"offset": {"line": 42, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}
