@@ -7,14 +7,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
 import { Navigation } from 'swiper/modules';
 
-/* interface Opinons {
-  id: number,
-  avatar: string,
-  startLevel: number,
-  text: string,
-  name: string,
-  countryFlag: string
-} */
 
 const LIST_OPINOS = [
   {
@@ -24,7 +16,7 @@ const LIST_OPINOS = [
     text: `La experiencia en esta academia ha sido increíble. Las clases son dinámicas, 
     y los materiales me ayudaron mucho a mejorar mi nivel de español en poco tiempo.`,
     name: 'Jack',
-    countryFlag: ''
+    countryFlag: 'Canada.png'
   },
   {
     id: 2,
@@ -34,7 +26,7 @@ const LIST_OPINOS = [
     y la academia hizo un trabajo impecable. La precisión y rapidez del servicio nos 
     ayudaron a cumplir con los plazos sin problemas. `,
     name: 'Laura',
-    countryFlag: ''
+    countryFlag: 'Uruguay.png'
   },
   {
     id: 3,
@@ -43,7 +35,7 @@ const LIST_OPINOS = [
     text: `Gracias a su servicio de interpretación simultánea, pudimos realizar nuestra conferencia 
     internacional sin contratiempos. Su profesionalismo y preparación fueron clave para el éxito del evento.`,
     name: 'Alex',
-    countryFlag: ''
+    countryFlag: 'USA.png'
   }
 ]
 
@@ -53,7 +45,7 @@ export default function Opinions() {
     /* const isTable = useMediaQuery("(min-width: 769px) and (max-width: 920px)")
     const screamMedia = useMediaQuery("(min-width: 920px) and (max-width: 1540px)") */
   return (
-    <section>
+    <section style={{ height: '654px' }}>
       <Grid2>
         <article style={{ marginTop: '80px' }}>
           <header>
@@ -75,21 +67,21 @@ export default function Opinions() {
         </article>
       </Grid2>
       <Grid2 sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Box sx={{ width: '85%', marginTop: '6rem' }}>
+        <Box sx={{ width: '100%', marginTop: '6rem', paddingLeft: '8%', paddingRight: '0%' }}>
           <Swiper
-              spaceBetween={isMobil ? 44 : 0}
+              spaceBetween={isMobil ? 44 : 40}
               slidesPerView={isMobil ? 1 : 3}
               loop={true}
               modules={[Navigation]}
               autoplay={{ delay: 5000 }}
               pagination={{ clickable: true }}
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: '100%', height: '300px' }}
           >
             {
               LIST_OPINOS.map((opinion, index) => {
                 return (
                   <SwiperSlide key={index}> 
-                    <CardOpinion />
+                    <CardOpinion theme={theme} itemOpinion={opinion} idMobil={isMobil} />
                   </SwiperSlide>
                 )
               })

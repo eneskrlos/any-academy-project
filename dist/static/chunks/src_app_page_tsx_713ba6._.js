@@ -7,9 +7,9 @@
   "chunks": [
     "static/chunks/src_abaf2b._.js",
     "static/chunks/node_modules_next_f5074b._.js",
-    "static/chunks/node_modules_@mui_material_1f1028._.js",
+    "static/chunks/node_modules_@mui_material_a36202._.js",
     "static/chunks/node_modules_swiper_6d53c8._.js",
-    "static/chunks/node_modules_613459._.js",
+    "static/chunks/node_modules_16b0a2._.js",
     "static/chunks/_ef96d6._.css"
   ],
   "source": "dynamic"
