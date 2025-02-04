@@ -4,16 +4,17 @@ import Title from './Title'
 
 interface TitleFooterProps {
     theme: Theme,
-    text: string
+    text: string,
+    style?: React.CSSProperties
 }
 
-export default function TitleFooter({ theme, text }:TitleFooterProps) {
+export default function TitleFooter({ theme, text, style }:TitleFooterProps) {
   return (
     <Title
         text={text}
         variant='body1'
         component='p'
-        style={{
+        style={style || {
             fontFamily: '"Quicksand", sans-serif',
             fontSize: '20px',
             color: theme.palette.background.default,

@@ -16,18 +16,19 @@
     justify-content: center;
 }
 
-.item.item-2 {
-    display: flex;
+/*.item.item-2 {
+     display: flex;
     justify-content: center;
     flex-direction: column;
 }
-
+ */
 .item.item-3 {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.item.item-4 {
-    display: flex;
-    justify-content: center;
-}
+/* .item.item-4 {
+    
+} */
+

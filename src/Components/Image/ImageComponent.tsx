@@ -8,9 +8,10 @@ interface PropsImage {
     priority: boolean
     style?: React.CSSProperties
     quality?: number | undefined
+    color?: string
 }
  
-export default function ImageComponet({ src, width, height, alt, priority = false, style, quality }: PropsImage) {
+export default function ImageComponet({ src, width, height, alt, priority = false, style, quality, color }: PropsImage) {
   return (
     <Image
       src={src}
@@ -21,6 +22,7 @@ export default function ImageComponet({ src, width, height, alt, priority = fals
       style={style || {}}
       quality={quality || undefined}
       sizes='(max-width: 768px) 100vw, 33vw'
+      color={color || undefined}
     />
   )
 }

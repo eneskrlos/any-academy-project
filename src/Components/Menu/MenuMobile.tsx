@@ -116,9 +116,9 @@ export default function MenuMobile({text, theme}: {text: string, theme: Theme}) 
         open={open}
         onClose={handleClose}
       >
-        <MenuItemCustom text='Principiante' menuItemStyle={MENU_ITEM_STYLE}  />
-        <MenuItemCustom text='Intermedio' menuItemStyle={MENU_ITEM_STYLE}  />
-        <MenuItemCustom text='Avanzado' menuItemStyle={MENU_ITEM_STYLE}  />
+        <MenuItemCustom text='Inglés' menuItemStyle={MENU_ITEM_STYLE}  />
+        <MenuItemCustom text='Italiano' menuItemStyle={MENU_ITEM_STYLE}  />
+        <MenuItemCustom text='Español' menuItemStyle={MENU_ITEM_STYLE}  />
       </StyledMenu>
     </>
   )
