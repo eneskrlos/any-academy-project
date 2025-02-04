@@ -171,7 +171,34 @@ export default function Footer() {
                 </List>
             </Box>
         </Box>
-        <Box className='onda_footer'></Box>
+        <Box sx={{
+            background: theme.palette.text.primary,
+            width: '100%',
+            height: '136px',
+            borderRadius: '50% 50% 0 0',
+            position: 'relative',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            transform: 'translateY(54px)',
+            overflow: 'hidden',
+        }}>
+            <Box marginTop={'4rem'} >
+                <TitleFooter
+                theme={theme}
+                text='© 2024  Any’s Language Academy. All rights reserved.'
+                style={{
+                    fontFamily: '"Quicksand", sans-serif',
+                    fontSize: '20px',
+                    color: theme.palette.background.default,
+                    fontWeight: '400',
+                    textAlign: 'center',
+                    width: '100%',
+                    textWrap: 'wrap'
+                }}  
+                />
+            </Box>
+        </Box>
     </footer>
   )
 }
