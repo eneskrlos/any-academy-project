@@ -122,7 +122,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     textImage={{
                         src: '/resources/images/Phone.png',
                         alt: 'Phone',
-                        text: 'Lamanos'
+                        text: 'Lamanos:'
                     }}
                     subTitle='+1 (305) 607-6884'
                     isMobil={isMobil} 
@@ -132,7 +132,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     textImage={{
                         src: '/resources/images/Mail.png',
                         alt: 'Mail',
-                        text: 'Correo'
+                        text: 'Correo:'
                     }}
                     subTitle='anyslacademy@gmail.com '
                     isMobil={isMobil} 

@@ -1,5 +1,5 @@
 'use client'
-import { Box, List, useTheme } from '@mui/material'
+import { Box, List, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
 import './footer.css'
 import ImageComponet from '../Image/ImageComponent';
@@ -80,8 +80,9 @@ const SOCIAL_RED = [
 
 export default function Footer() {
     const theme = useTheme();
+    const isMobil = useMediaQuery("(max-width: 768px)")
   return (
-    <footer style={{ height: '386px', background: theme.palette.primary.main }}>
+    <footer style={{ height: isMobil ? 'auto' : '386px', background: theme.palette.primary.main }}>
         <Box className="container" >
             <Box className="item item-1">
              <ImageComponet
@@ -124,7 +125,16 @@ export default function Footer() {
             <Box className="item item-3">
                 <TitleFooter
                     theme={theme}
-                    text='Contacto' 
+                    text='Contacto'
+                    style={{
+                        fontFamily: '"Quicksand", sans-serif',
+                        fontSize: '20px',
+                        color: theme.palette.background.default,
+                        fontWeight: '500',
+                        textAlign: 'left',
+                        width: '100%',
+                        textWrap: 'wrap'
+                    }} 
                 />
                 {LIST_CONTACTO.map((value, index) => (
                     <TitleImage
@@ -189,9 +199,9 @@ export default function Footer() {
                 text='© 2024  Any’s Language Academy. All rights reserved.'
                 style={{
                     fontFamily: '"Quicksand", sans-serif',
-                    fontSize: '20px',
+                    fontSize: isMobil ? '18px' : '20px',
                     color: theme.palette.background.default,
-                    fontWeight: '400',
+                    fontWeight: isMobil ? '600' : '400',
                     textAlign: 'center',
                     width: '100%',
                     textWrap: 'wrap'

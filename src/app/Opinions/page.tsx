@@ -75,7 +75,7 @@ export default function Opinions() {
               modules={[Navigation]}
               autoplay={{ delay: 5000 }}
               pagination={{ clickable: true }}
-              style={{ width: '100%', height: '300px' }}
+              style={{ width: '100%', height: isMobil ? 'auto' : '300px' }}
           >
             {
               LIST_OPINOS.map((opinion, index) => {

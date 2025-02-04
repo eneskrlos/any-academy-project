@@ -26,7 +26,7 @@ export default function TitleImage({ text, src, alt, theme, spacing, styleText, 
             style={styleImage}
         />
         <Title
-            text={text + ':'}
+            text={text}
             variant='body1'
             component={'p'}
             style={ styleText || {
