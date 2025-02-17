@@ -1,9 +1,9 @@
-'use client'
 import React from 'react'
 import ButtonContainded from './ButtonContainded'
 import { Theme } from '@mui/material'
 import Title from '../Titles/Title'
 import { storeUser } from '@/store/storeUser'
+import { procesSendEmail } from '@/Services/SendEmail'
 
 interface ButtonProps {
     theme: Theme,
@@ -19,9 +19,23 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
     } = storeUser()
     
     const sendMessage = () => {
+        
         console.log(user)
-        clearUser()
-        closeModal()
+        try {
+            procesSendEmail(
+                {
+                    to: 'erneskrlos@gmail.com',
+                    subject: 'Contacto desde la web',
+                    body: `Nombre: ${user.name} \nCorreo: ${user.email} \nMensaje: ${user.message}`
+                }
+            )
+            clearUser()
+            closeModal()
+        } catch (error) {
+            console.log(error)
+            return;
+        }
+        
     }
     
   return (
