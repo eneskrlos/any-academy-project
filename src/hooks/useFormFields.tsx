@@ -53,7 +53,7 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                 key={`telefono`} 
                 id='telefono'
                 name='phone' 
-                label='Télefono' 
+                label='Teléfono' 
                 required 
                 fullWidth={false}
                 variant='outlined' 
@@ -71,8 +71,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                 <TexFieldBasic
                 key={`correo`} 
                 id='correo'
-                name='email' 
-                label='Correo Electrónico' 
+                name='email'
+                label='Correo electrónico' 
                 required 
                 fullWidth={false}
                 variant='outlined' 
@@ -91,7 +91,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                 key={`sms`} 
                 id='sms' 
                 name='message'
-                label='Mensaje' 
+                label='Mensaje'
+                placeholder='Tengo una duda en...' 
                 required 
                 fullWidth={false}
                 multiline

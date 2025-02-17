@@ -82,7 +82,7 @@ export default function Footer() {
     const theme = useTheme();
     const isMobil = useMediaQuery("(max-width: 768px)")
   return (
-    <footer style={{ height: isMobil ? 'auto' : '386px', background: theme.palette.primary.main }}>
+    <footer style={{ height: isMobil ? 'auto' : '386px', background: theme.palette.secondary.main }}>
         <Box className="container" >
             <Box className="item item-1">
              <ImageComponet
@@ -97,30 +97,45 @@ export default function Footer() {
             <Box className="item item-2">
                 <TitleFooter
                     theme={theme}
-                    text='Servicio' 
+                    text='Servicio'
+                    style={{
+                        fontFamily: '"Quicksand", sans-serif',
+                        fontSize: '20px',
+                        color: theme.palette.background.default,
+                        fontWeight: '500',
+                        textAlign: 'left',
+                        width: '100%',
+                        textWrap: 'wrap',
+                        position: 'relative',
+                        left: isMobil ? '0px' : '100px'
+
+                    }} 
                 />
-                <List sx={{ width: '100%' }}>
-                    {LINKS_SERVICIOS.map((value, index) => (
-                        <Link
-                            key={index}
-                            href={value.href}
-                        >
-                            <TitleFooter
-                                text={value.name}
-                                theme={theme}
-                                style={{
-                                    fontFamily: '"Quicksand", sans-serif',
-                                    fontSize: '20px',
-                                    color: theme.palette.background.default,
-                                    fontWeight: '400',
-                                    textAlign: 'left',
-                                    width: '100%',
-                                    textWrap: 'wrap'
-                                }} 
-                            />
-                        </Link>
-                    ))}
-                </List>
+                <div style={{ position: 'relative', left: isMobil ? '0px' :'100px' }}>
+
+                    <List sx={{ width: '100%' }}>
+                        {LINKS_SERVICIOS.map((value, index) => (
+                            <Link
+                                key={index}
+                                href={value.href}
+                            >
+                                <TitleFooter
+                                    text={value.name}
+                                    theme={theme}
+                                    style={{
+                                        fontFamily: '"Quicksand", sans-serif',
+                                        fontSize: '20px',
+                                        color: theme.palette.background.default,
+                                        fontWeight: '400',
+                                        textAlign: 'left',
+                                        width: '100%',
+                                        textWrap: 'wrap'
+                                    }} 
+                                />
+                            </Link>
+                        ))}
+                    </List>
+                </div>
             </Box>
             <Box className="item item-3">
                 <TitleFooter

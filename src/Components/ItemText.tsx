@@ -56,11 +56,13 @@ export default function ItemText({ theme, sx, text, lineVertical, isMobil, screa
                 fontWeight: 400,
                 fontSize: screamMedia ? '18px' : '24px',
                 color: theme.palette.text.primary,
-                lineHeight: isMobil ? '25px' : screamMedia? '30px' : '50px',
+                lineHeight: isMobil ? '25px' : screamMedia? '30px' : '33px',
                 textAlign: 'left',
                 maxWidth: '760px',
                 textWrap: 'wrap',
-                marginLeft: '25px'
+                marginLeft: '25px',
+                position: 'relative',
+                bottom: isMobil ? '1rem' : '1rem'
             }} 
             />
         </Grid2>

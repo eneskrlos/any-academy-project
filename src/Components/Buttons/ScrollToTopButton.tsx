@@ -34,7 +34,7 @@ export default function ScrollToTopButton() {
               position: 'fixed',
               bottom: '20px',
               right: '20px',
-              backgroundColor: '#0070f3',
+              backgroundColor: '#6A9EDA',
               color: '#fff',
               border: 'none',
               borderRadius: '50%',

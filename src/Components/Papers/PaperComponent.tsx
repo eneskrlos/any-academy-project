@@ -66,7 +66,7 @@ export default function PaperComponent({ theme, title, description, step }: Pape
               fontFamily: '"Quicksand", sans-serif',
               fontSize: isMobil ? '16px' : screamMedia ? '12px' : '16px',
               color: theme.palette.text.secondary,
-              fontWeight: '400',
+              fontWeight: '800',
               textAlign: isMobil ? 'center': 'left',
               width: '100%',
               textWrap: 'wrap',

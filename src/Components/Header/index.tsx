@@ -18,7 +18,7 @@ export default function Header() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "15px",
-        backgroundColor: "#fff",
+        backgroundColor: "#F6F6F6",
         boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
         borderBottom: "1px solid #ccc",
       }}
