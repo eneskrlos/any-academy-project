@@ -15,8 +15,8 @@ interface EmailSendPorps {
 }
 
 export async function procesSendEmail({ to, subject, body }: EmailPorps) {
-    const SMTP_EMAIL = 'wbur pdyt kelv bqgq'; // process.env.SMTP_EMAIL;
-    const SMTP_PASSWORD = 'ernesdevkrlos@gmail.com' // process.env.SMTP_PASSWORD;
+    const SMTP_EMAIL = ''; // process.env.SMTP_EMAIL;
+    const SMTP_PASSWORD = '' // process.env.SMTP_PASSWORD;
     console.log(SMTP_PASSWORD, SMTP_EMAIL)
     if (!SMTP_EMAIL || !SMTP_PASSWORD) {
         throw new Error('Los valores de SMTP no estan definidos');
