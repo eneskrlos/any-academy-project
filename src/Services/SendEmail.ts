@@ -1,51 +1,56 @@
 'use server'
-import nodemailer, { Transporter } from 'nodemailer';
+import { SendEmail } from '@/lib/brevo'
 
 interface EmailPorps {
-    to: string;
+    
     subject: string;
-    body: string;
+    message: string;
+    emailPerson: string;
+    namePerson: string;
+    phone: string
 }
 
-interface EmailSendPorps {
+/* interface EmailSendPorps {
     from: string;
     to: string;
     subject: string;
     body: string;
-}
+} */
 
-export async function procesSendEmail({ to, subject, body }: EmailPorps) {
-    const SMTP_EMAIL = ''; // process.env.SMTP_EMAIL;
-    const SMTP_PASSWORD = '' // process.env.SMTP_PASSWORD;
-    console.log(SMTP_PASSWORD, SMTP_EMAIL)
-    if (!SMTP_EMAIL || !SMTP_PASSWORD) {
-        throw new Error('Los valores de SMTP no estan definidos');
-    } else {
-        const transporter = nodemailer.createTransport({
-            host: 'gmail',
-            auth: {
-                user: SMTP_EMAIL,
-                pass: SMTP_PASSWORD
-            }
-        });
-
-        const resultEmialVerifed = veriafyEmail(transporter)
-
-        console.log(resultEmialVerifed)
+export async function procesSendEmail({ subject, message, emailPerson, namePerson, phone }: EmailPorps) {
     
-
-        const resultEmailSended = await sendEmail({
-            from: SMTP_EMAIL,
-            to: to,
+    console.log('procesando envio de correo')
+    
+    try {
+        await SendEmail({
+            emailPerson: emailPerson,
+            namePerson: namePerson,
             subject: subject,
-            body: body
-        }, transporter)
-    
-        console.log(resultEmailSended)
+            body: `<html>
+        <body>
+            <h1>Nuevo mensaje recibido desde el formulario de contacto</h1>
+            <p><strong>Nombre:</strong> ${namePerson}</p>
+            <p><strong>Email:</strong> ${emailPerson}</p>
+            ${phone ? `<p><strong>Teléfono:</strong> ${phone}</p>` : ''}
+            <hr>
+            <p><strong>Mensaje:</strong></p>
+            <p>Mensaje:${message}</p>   
+            </body>
+        </html>`
+        }); // replace()
+        console.log("envio el correo")
+    } catch (error) {
+    console.log(error)
+        return {
+            code: 500,
+            message: 'A ocurrido error. Interte mas tarde',
+            data: null
+        };
+        
     }
 }
 
-async function veriafyEmail(transporter: Transporter) {
+/* async function veriafyEmail(transporter: Transporter) {
     try {
         const testResult = await transporter.verify();
         return testResult;
@@ -68,4 +73,4 @@ async function sendEmail({ from, to, subject, body }: EmailSendPorps, transporte
         console.log(error)
         return;
     }
-}
+} */

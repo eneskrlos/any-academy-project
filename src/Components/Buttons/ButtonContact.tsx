@@ -17,21 +17,27 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
         user,
         clearUser
     } = storeUser()
-    
+    console.log(user)
     const sendMessage = () => {
         
-        console.log(user)
+        console.log(user.message)
         try {
-            procesSendEmail(
+            const  result = procesSendEmail(
                 {
-                    to: 'erneskrlos@gmail.com',
+                    emailPerson: user.email,
+                    namePerson: user.name,
+                    phone: user.phone,
                     subject: 'Contacto desde la web',
-                    body: `Nombre: ${user.name} \nCorreo: ${user.email} \nMensaje: ${user.message}`
+                    message: user.message
                 }
             )
+            console.log(result)
             clearUser()
             closeModal()
+            alert("Se envio el correo correctamente")
         } catch (error) {
+            clearUser()
+            closeModal()
             console.log(error)
             return;
         }
