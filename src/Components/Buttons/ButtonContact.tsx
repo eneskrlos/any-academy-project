@@ -4,6 +4,8 @@ import { Theme } from '@mui/material'
 import Title from '../Titles/Title'
 import { storeUser } from '@/store/storeUser'
 import { procesSendEmail } from '@/Services/SendEmail'
+import { EMAIL_REGEX } from '@/utils/constants'
+import { storeError } from '@/store/storeErrorForm'
 
 interface ButtonProps {
     theme: Theme,
@@ -11,18 +13,46 @@ interface ButtonProps {
     closeModal: () => void
 }
 
+
+
 export default function ButtonContact({ theme, textButton, closeModal }:ButtonProps) {
     
     const {
         user,
         clearUser
     } = storeUser()
-    console.log(user)
-    const sendMessage = () => {
+    
+    const { error, updateError, clearError } = storeError()
+    const sendMessage = async  () => {
         
-        console.log(user.message)
+        
+        if (!user.email || !EMAIL_REGEX.test(user.email)) {
+            updateError( {...error, email: 'El email no es valido'})
+        }
+        if (!user.name || (user.name === '' || user.name === undefined) ) {
+            updateError({
+              ...error,
+              name: 'El campo nombre no puede estar vacio.'
+            })
+        }
+        if (!user.phone || (user.phone === '' || user.phone === undefined) ) {
+            updateError({
+              ...error,
+              phone: 'El campo teléfono no puede estar vacio.'
+            })
+        }
+        if (!user.message || (user.message === '' || user.message === undefined) ) {
+            updateError({
+              ...error,
+              message: 'El campo mensaje no puede estar vacio.'
+            })
+        }
         try {
-            const  result = procesSendEmail(
+            if(error.email || error.message || error.name || error.phone || error.genericError){
+                console.log("Tiene errores")
+                return;
+            }
+            const  result = await  procesSendEmail(
                 {
                     emailPerson: user.email,
                     namePerson: user.name,
@@ -31,10 +61,11 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
                     message: user.message
                 }
             )
-            console.log(result)
+            clearError()
             clearUser()
             closeModal()
-            alert("Se envio el correo correctamente")
+            console.log(result)
+            // alert("Se envio el correo correctamente")
         } catch (error) {
             clearUser()
             closeModal()

@@ -1,13 +1,32 @@
 import brevo from '@getbrevo/brevo'
 
 const apiInstance = new brevo.TransactionalEmailsApi();
-const kEY = process.env?.BREVO_API_KEY as string
-apiInstance.setApiKey(
-    brevo.TransactionalEmailsApiApiKeys.apiKey,
-    kEY
-)
+const KEY = process.env?.BREVO_API_KEY as string
 
-const smtpEmail = new brevo.SendSmtpEmail();
+const EMAIL_ACADEMY='erneskrlos@gmail.com'
+const NAME_ACADEMY='Anys Academy'
+const EMAIL_VERIFY='erneskrlos@gmail.com'
+const NAME_VERIFY='Anys Academy'
+
+// Asegúrate de que KEY no sea 
+const validateKey = () => {
+
+    if (!KEY) {
+        console.error("Error: BREVO_API_KEY no está definida.");
+        // Considera lanzar un error o manejar esta situación apropiadamente
+       return 'error'
+    } else {
+         apiInstance.setApiKey(
+            brevo.TransactionalEmailsApiApiKeys.apiKey,
+            KEY
+        );
+        return 'ok'
+    }
+}
+
+
+
+
 
 interface EmailPorps {
     emailPerson: string;
@@ -18,15 +37,34 @@ interface EmailPorps {
 
 
 export async function SendEmail({ body, subject, emailPerson, namePerson }: EmailPorps) {
-    console.log('aqui entro')
+    if (validateKey() === 'error' ) {
+        return {
+            code: 500,
+            message: 'Error sending email',
+            data: null
+        }
+    } 
+    const smtpEmail = new brevo.SendSmtpEmail();
+    
     smtpEmail.subject = subject;
-    smtpEmail.to = [{ email: 'erneskrlos@gmail.com', name: 'Anys Academy' }];
-    smtpEmail.htmlContent =  body; // '<html><body><h1>This is a test HTML sent from Brevo</h1></body></html>';
-    smtpEmail.sender = { name: 'Ernesto', email: 'ernesdevkrlos@gmail.com' };
-    smtpEmail.replyTo = { email: namePerson, name: emailPerson };
+    smtpEmail.to = [{ email: EMAIL_ACADEMY, name: NAME_ACADEMY }];
+    smtpEmail.htmlContent =  body;
+    smtpEmail.sender = { name: NAME_VERIFY, email: EMAIL_VERIFY };
+    smtpEmail.replyTo = { name: namePerson, email: emailPerson  };
+
     await apiInstance.sendTransacEmail(smtpEmail).then((data)=> {
         console.log('API called successfully. Returned data: ' + JSON.stringify(data))
+        return {
+            code: 200,
+            message: 'Email sent successfully',
+            data: data
+        }
     }).catch((error) => {
-        console.log(error)
+        console.log("Erroro", error.body)
+        return {
+            code: 500,
+            message: 'Error sending email',
+            data: null
+        }
     });
 }
