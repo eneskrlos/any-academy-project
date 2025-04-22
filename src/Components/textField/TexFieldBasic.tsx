@@ -13,10 +13,11 @@ interface TextFieldProps {
     rows?: number,
     value?: string,
     placeholder?: string,
+    error?: boolean
     onChange?: (e: React.ChangeEvent<HTMLInputElement> ) => void 
 }
 
-export default function TexFieldBasic({ id, name, label, variant, style, required, fullWidth, multiline, rows, value, onChange, placeholder }:TextFieldProps) {
+export default function TexFieldBasic({ id, name, label, variant, style, required, fullWidth, multiline, rows, value, onChange, placeholder, error }:TextFieldProps) {
   return (
     <TextField 
         id={id}
@@ -31,6 +32,7 @@ export default function TexFieldBasic({ id, name, label, variant, style, require
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        error={!!error}
     />
   )
 }
