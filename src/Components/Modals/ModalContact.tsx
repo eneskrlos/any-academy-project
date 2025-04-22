@@ -18,7 +18,7 @@ const style = (theme: Theme, isMobil: boolean) => ({
   bgcolor: theme.palette.background.default,
   border: `2px solid ${theme.palette.common.white}`,
   boxShadow: 24,
-  p: 4,
+  p: 2,
 })
 
 const styleBox = (theme: Theme) => ({
@@ -28,9 +28,9 @@ const styleBox = (theme: Theme) => ({
     flexDirection:'column',
     justifyContent: 'center',
     alignItems:'center',
-    gap: 2,
-    marginTop: '40px',
-    marginBottom: '40px'
+    gap: '8px',
+    marginTop: '20px',
+    marginBottom: '20px'
   })
 
 interface ModalContactProps {
@@ -51,8 +51,10 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
     aria-labelledby="modal-modal-title"
     aria-describedby="modal-modal-description"
     style={{
-        width: '100%',
-        margin: '2rem' 
+        // width: '100%',
+        // margin: '2rem'
+        maxHeight: '100vh',
+        overflowY: 'auto'
     }}
     >
         
@@ -87,7 +89,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     {
                         isMobil ?
                         <></> :
-                        <article style={{ marginTop: '15px' }}>
+                        <article style={{ marginTop: '2px' }}>
                             <Title text={`Estamos aquí para orientarte. Si necesitas más información sobre nuestros servicios, 
                             contáctanos mediante el formulario y te responderemos lo antes posible. `} 
                                 variant='subtitle1' component={'p'} style={{
@@ -96,7 +98,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                                 color: theme.palette.text.primary,
                                 fontWeight: '300',
                                 textAlign:'center',
-                                lineHeight: isMobil? '20px' :'30px',
+                                lineHeight: isMobil? '10px' :'20px',
                                 width: '560px',
                                 height: 'auto',
                                 textWrap: 'wrap'

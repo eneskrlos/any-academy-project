@@ -3,7 +3,7 @@ import ButtonContainded from './ButtonContainded'
 import { Theme } from '@mui/material'
 import Title from '../Titles/Title'
 import { storeUser } from '@/store/storeUser'
-// import { procesSendEmail } from '@/Services/SendEmail'
+import { procesSendEmail } from '@/Services/SendEmail'
 
 import { storeError } from '@/store/storeErrorForm'
 
@@ -18,18 +18,17 @@ interface ButtonProps {
 export default function ButtonContact({ theme, textButton, closeModal }:ButtonProps) {
     
     const {
-       //  user,
+        user,
         clearUser
     } = storeUser()
 
-    const [desabilitar, setDesabilitar] = useState(false)
+    const [desabilitar, setDesabilitar] = useState(true)
     
     const { error, clearError } = storeError()
     const sendMessage = async  () => {
-        console.log('aqui')
         try {
             
-            /* const  result = await  procesSendEmail(
+            const  result = await  procesSendEmail(
                 {
                     emailPerson: user.email,
                     namePerson: user.name,
@@ -37,11 +36,11 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
                     subject: 'Contacto desde la web',
                     message: user.message
                 }
-            ) */
+            )
             clearError()
             clearUser()
             closeModal()
-            // console.log(result)
+            console.log(result)
             // alert("Se envio el correo correctamente")
         } catch (error) {
             clearUser()
@@ -52,12 +51,15 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
         
     }
 
+    
+    
     useEffect(() => {
-        if(error.email.trim() === '' || error.message.trim() === '' || error.name.trim() === '' 
-        || error.phone.trim() === '' || error.genericError.trim() === ''){
+        if(error.email.trim() !== '' || error.message.trim() !== '' || error.name.trim() !== '' 
+        || error.phone.trim() !== ''){
             setDesabilitar(true)
+        } else {
+            setDesabilitar(false)
         }
-        setDesabilitar(false)
     }, [error])
     
   return (

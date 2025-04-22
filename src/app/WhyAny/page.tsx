@@ -5,6 +5,8 @@ import React from 'react'
 import ItemText from '@/Components/ItemText';
 import ButtonContainded from '@/Components/Buttons/ButtonContainded';
 import ImageComponet from '@/Components/Image/ImageComponent';
+import { storeUser } from '@/store/storeUser';
+import ModalContact from '@/Components/Modals/ModalContact';
 
 const LIST_TEXT = [
   {
@@ -41,6 +43,15 @@ export default function WhyAnyPage() {
   const isTable = useMediaQuery("(min-width: 769px) and (max-width: 920px)")
   const screamMedia = useMediaQuery("(min-width: 920px) and (max-width: 1540px)")
   const lastElement = LIST_TEXT.length;
+   const {
+        clearUser
+    } = storeUser()
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    clearUser()
+    setOpen(false)
+  }
   
   return (
     <section style={{ width: '100%', height: isMobil ? '1437px' : 'auto' }} >
@@ -98,7 +109,9 @@ export default function WhyAnyPage() {
               }
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center'  }}>
-              <ButtonContainded>
+              <ButtonContainded
+                onclick={handleOpen}
+              >
                 <Box sx={{ 
                   display: 'flex',
                   flexDirection: 'row',
@@ -140,7 +153,8 @@ export default function WhyAnyPage() {
             </Box>
           </Grid2>
         </Grid2>
-
+      <ModalContact theme={theme} open={open} handleClose={handleClose} />
     </section>
+
   )
 }

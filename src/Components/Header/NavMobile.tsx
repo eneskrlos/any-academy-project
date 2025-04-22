@@ -14,6 +14,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import LinkButton from '../Buttons/LinkButton';
 import AcordionMenu from '../Acordion/AcordionMenu';
 import ModalContact from '../Modals/ModalContact';
+import { storeUser } from '@/store/storeUser';
 
 
 const STYLE_BUTTOM_ICON = (theme: Theme) => ({
@@ -48,6 +49,10 @@ export default function NavMobile() {
       </svg>`
 
     const svgWaveBlueUrl = `data:image/svg+xml;base64,${btoa(svgWaveBlue)}`
+
+    const {
+            clearUser
+        } = storeUser()
     
       const toggleDrawer =
         (open: boolean) =>
@@ -67,7 +72,10 @@ export default function NavMobile() {
 
         const [openModal, setOpenModal] = React.useState(false);
         const handleOpenModal = () => setOpenModal(true);
-        const handleCloseModal = () => setOpenModal(false);
+        const handleCloseModal = () => {
+          clearUser()
+          setOpenModal(false)
+        };
     
       const list = () => (
         <Box

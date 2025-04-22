@@ -97,8 +97,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                         error={!!error.name} 
                     />
                     
-                    {error.name && (<span  style={{color: 'red', fontSize: '12px'}}>{error.name}</span>)}
-                    {!error.name && (<span style={{ minHeight: '14px' }}></span>)}
+                    {error.name && (<span  style={{color: 'red', fontSize: '10px'}}>{error.name}</span>)}
+                    {!error.name && (<span style={{ minHeight: '12px' }}></span>)}
                 </div>
             )
         }
@@ -121,8 +121,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                         value={user.phone || ''}
                         error={!!error.phone} 
                     />
-                    {error.phone && (<span  style={{color: 'red', fontSize: '12px'}}>{error.phone}</span>)}
-                    {!error.phone && (<span style={{ minHeight: '14px' }}></span>)}
+                    {error.phone && (<span  style={{color: 'red', fontSize: '10px'}}>{error.phone}</span>)}
+                    {!error.phone && (<span style={{ minHeight: '12px' }}></span>)}
                 </div>
             )
         }
@@ -146,8 +146,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                         value={user.email || ''}
                         error={!!error.email}
                     />
-                    {error.email && (<span  style={{color: 'red', fontSize: '12px'}}>{error.email}</span>)}
-                    {!error.email && (<span style={{ minHeight: '14px' }}></span>)}
+                    {error.email && (<span  style={{color: 'red', fontSize: '10px'}}>{error.email}</span>)}
+                    {!error.email && (<span style={{ minHeight: '12px' }}></span>)}
                 </div>
             )
         }
@@ -173,8 +173,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                         value={user.message || ''}
                         error={!!error.message}
                     />
-                    {error.message && (<span  style={{color: 'red', fontSize: '12px'}}>{error.message}</span>)}
-                    {!error.message && (<span style={{ minHeight: '14px' }}></span>)}
+                    {error.message && (<span  style={{color: 'red', fontSize: '10px'}}>{error.message}</span>)}
+                    {!error.message && (<span style={{ minHeight: '12px' }}></span>)}
                 </div>
             )
         }

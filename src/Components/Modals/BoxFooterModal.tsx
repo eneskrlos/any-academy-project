@@ -19,7 +19,7 @@ interface BoxFooterModalProps {
 export default function BoxFooterModal({ theme, textImage, subTitle, isMobil } : BoxFooterModalProps) {
     const { text, src, alt } = textImage
     return (
-    <Box display={'flex'} flexDirection={isMobil? 'column': 'row'} justifyContent={ isMobil? 'center' : 'space-between' } alignItems={'center'}>
+    <Box display={'flex'} flexDirection={isMobil? 'column': 'row'} justifyContent={ isMobil? 'center' : 'space-between' } alignItems={'center'} height={'10pxs'}>
         <TitleImage
             text={text}
             src={src}
