@@ -124,7 +124,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                     textImage={{
                         src: '/resources/images/Phone.png',
                         alt: 'Phone',
-                        text: 'LLamanos:'
+                        text: 'LLámanos:'
                     }}
                     subTitle='+1 (305) 607-6884'
                     isMobil={isMobil} 
