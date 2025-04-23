@@ -4,7 +4,7 @@ import { SendEmail } from '@/lib/brevo'
 interface EmailPorps {
     
     subject: string;
-    message: string;
+    messagePerson: string;
     emailPerson: string;
     namePerson: string;
     phone: string
@@ -17,7 +17,7 @@ interface EmailPorps {
     body: string;
 } */
 
-export async function procesSendEmail({ subject, message, emailPerson, namePerson, phone }: EmailPorps) {
+export async function procesSendEmail({ subject, messagePerson, emailPerson, namePerson, phone }: EmailPorps) {
     
     console.log('procesando envio de correo')
     
@@ -32,9 +32,8 @@ export async function procesSendEmail({ subject, message, emailPerson, namePerso
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Nuevo Mensaje de Contacto</title>
               <style type="text/css">
-                /* Puedes añadir estilos básicos aquí si lo necesitas, pero inline es más seguro */
                 body { margin: 0; padding: 0; font-family: sans-serif; }
-                table { border-collapse: collapse; } /* Evita dobles bordes */
+                table { border-collapse: collapse; } 
               </style>
             </head>
             <body style="margin: 0; padding: 0; background-color: #f4f4f4;"> <!-- Opcional: color de fondo general -->
@@ -50,7 +49,7 @@ export async function procesSendEmail({ subject, message, emailPerson, namePerso
                           ${phone ? `<p><strong>Teléfono:</strong> ${phone}</p>` : ''}
                           <hr>
                           <p><strong>Mensaje:</strong></p>
-                          <p>${message.replace(/\n/g, '<br>')}</p>
+                          <p>${messagePerson.replace(/\n/g, '<br>')}</p>
                           <br>
                         </td>
                       </tr>
@@ -74,11 +73,13 @@ export async function procesSendEmail({ subject, message, emailPerson, namePerso
               </table>
             </body>
         </html>`
-        }); // replace()
-        console.log(response)
-        return response;
+        });
+        const { code , message} = response
+        return {
+          code, message
+        };
     } catch (error) {
-    console.log(error)
+        console.log(error)
         return {
             code: 500,
             message: 'A ocurrido error. Interte mas tarde',
@@ -87,27 +88,3 @@ export async function procesSendEmail({ subject, message, emailPerson, namePerso
     }
 }
 
-/* async function veriafyEmail(transporter: Transporter) {
-    try {
-        const testResult = await transporter.verify();
-        return testResult;
-    } catch (error) {
-        console.log(error)
-        return;
-    }
-}
-
-async function sendEmail({ from, to, subject, body }: EmailSendPorps, transporter: Transporter) {
-    try {
-        const sendResult = await transporter.sendMail({
-            from: from,
-            to: to,
-            subject: subject,
-            html: body
-        })
-        return sendResult;
-    } catch (error) {
-        console.log(error)
-        return;
-    }
-} */

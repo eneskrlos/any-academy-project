@@ -55,9 +55,9 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
             if (!user.phone?.trim()) {
                 newErrors.phone = 'El campo teléfono no puede estar vacio.';
             }
-            else if (!/^\d+$/.test(user.phone)) {
-                newErrors.phone = 'El teléfono solo debe contener números.';
-             }
+            else if (!/^\+?[\d-]+$/.test(user.phone)) {
+                newErrors.phone = 'El teléfono debe contener solo números, un signo \'+\' opcional al inicio y guiones (-).';
+            }
         }
         if (fieldsToRender.includes('sms')) {
             if (!user.message?.trim()) {
@@ -80,14 +80,15 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
         if (fieldsToRender.includes('nombre')) {
             fieldComponent.push(
                 <div key={`nombre`} style={{display: 'flex',flexDirection: 'column',gap: '1px'}} >
-                        <TexFieldBasic
+                    <TexFieldBasic
                         key={`nombre`} 
                         id='nombre'
                         name='name' 
                         label='Nombre' 
                         required 
                         fullWidth={false}
-                        variant='outlined' 
+                        variant='outlined'
+                        placeholder='Felipe..' 
                         style={{ 
                             border: theme.palette.primary.main,
                             width: isMobil? '300px' :  '350px'
@@ -112,7 +113,8 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                         label='Teléfono' 
                         required 
                         fullWidth={false}
-                        variant='outlined' 
+                        variant='outlined'
+                        placeholder='+1 (305) 607-6884'
                         style={{ 
                             border: theme.palette.primary.main,
                             width: isMobil? '300px' :'350px'
