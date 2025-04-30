@@ -1,15 +1,37 @@
-import brevo from '@getbrevo/brevo'
+import * as brevo from '@getbrevo/brevo'
 
-const apiInstance = new brevo.TransactionalEmailsApi();
+let apiInstance: brevo.TransactionalEmailsApi | null = null;
 const KEY = process.env?.BREVO_API_KEY as string
-
+let isBrevoInitialized = false;
 const EMAIL_ACADEMY= process.env?.EMAIL_ACADEMY as string
 const NAME_ACADEMY='Anys Academy'
 const EMAIL_VERIFY= process.env?.EMAIL_VERIFY as string
 const NAME_VERIFY='Anys Academy'
 
-// Asegúrate de que KEY no sea 
-const validateKey = () => {
+if (!KEY) {
+    console.error("CRITICAL ERROR: BREVO_API_KEY no está definida en las variables de entorno.");
+    // Aquí podrías incluso lanzar un error para detener el inicio si es crítico
+    // throw new Error("BREVO_API_KEY is not defined");
+} else if (!EMAIL_ACADEMY || !EMAIL_VERIFY) {
+    console.error("CRITICAL ERROR: EMAIL_ACADEMY o EMAIL_VERIFY no están definidas.");
+}
+else {
+    try {
+        apiInstance = new brevo.TransactionalEmailsApi(); // Ahora debería funcionar con el import *
+        apiInstance.setApiKey(
+            brevo.TransactionalEmailsApiApiKeys.apiKey,
+            KEY
+        );
+        isBrevoInitialized = true;
+        console.log("Cliente Brevo inicializado correctamente.");
+    } catch (error) {
+        console.error("Error al inicializar el cliente Brevo:", error);
+        // Mantener apiInstance como null y isBrevoInitialized como false
+    }
+}
+
+// Asegúrate de que KEY no sea  
+/*const validateKey = () => {
 
     if (!KEY) {
         // console.error("Error: BREVO_API_KEY no está definida.");
@@ -22,7 +44,7 @@ const validateKey = () => {
         );
         return 'ok'
     }
-}
+} */
 
 
 
@@ -37,13 +59,14 @@ interface EmailPorps {
 
 
 export async function SendEmail({ body, subject, emailPerson, namePerson }: EmailPorps) {
-    if (validateKey() === 'error' ) {
+    if (!isBrevoInitialized || !apiInstance) {
+        console.error("Error: Intento de enviar email pero Brevo no está inicializado correctamente (falta API Key o hubo un error previo).");
         return {
             code: 500,
-            message: 'Error sending email',
+            message: 'Error interno del servidor al configurar el servicio de correo.',
             data: null
-        }
-    } 
+        };
+    }
     const smtpEmail = new brevo.SendSmtpEmail();
     
     smtpEmail.subject = subject;
