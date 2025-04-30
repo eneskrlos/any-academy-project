@@ -7,6 +7,8 @@ import { Theme, useTheme } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import ModalContact from '../Modals/ModalContact';
 import { storeUser } from '@/store/storeUser';
+import { storeError } from '@/store/storeErrorForm';
+import { storeTouched } from '@/store/storeTouchedFrom';
 
 const Nav = styled('nav')({
   paddingRight: '5%',
@@ -50,12 +52,16 @@ export default function NavComponent() {
   const {
       clearUser
   } = storeUser()
+  const { clearError } = storeError()
+  const { clearTouched } = storeTouched()
   const linkStyle = LINK_STYLE(theme)
   const linkButtomStyle = LINK_STYLE_BUTTOM(theme)
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     clearUser()
+    clearError()
+    clearTouched()
     setOpen(false)
   }
   return (

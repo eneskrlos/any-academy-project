@@ -15,9 +15,10 @@ interface TextFieldProps {
     placeholder?: string,
     error?: boolean
     onChange?: (e: React.ChangeEvent<HTMLInputElement> ) => void 
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
 }
 
-export default function TexFieldBasic({ id, name, label, variant, style, required, fullWidth, multiline, rows, value, onChange, placeholder, error }:TextFieldProps) {
+export default function TexFieldBasic({ id, name, label, variant, style, required, fullWidth, multiline, rows, value, onChange, placeholder, error, onBlur }:TextFieldProps) {
   return (
     <TextField 
         id={id}
@@ -31,6 +32,7 @@ export default function TexFieldBasic({ id, name, label, variant, style, require
         rows={rows}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
         placeholder={placeholder}
         error={!!error}
     />

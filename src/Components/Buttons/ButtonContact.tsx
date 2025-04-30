@@ -7,6 +7,7 @@ import { procesSendEmail } from '@/Services/SendEmail'
 
 import { storeError } from '@/store/storeErrorForm'
 import { useSnackbar } from '@/hooks/useSnackbar'
+import { storeTouched } from '@/store/storeTouchedFrom'
 
 
 
@@ -25,6 +26,8 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
         user,
         clearUser
     } = storeUser()
+    
+    const { clearTouched } = storeTouched()
 
     const [desabilitar, setDesabilitar] = useState(true)
     
@@ -46,6 +49,7 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
                 
             clearError()
             clearUser()
+            clearTouched()
             if(result && result.code === 200) {
                 showSnackbar(result.message, 'success');
             } else {
@@ -54,6 +58,7 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
             closeModal()
         } catch (error) {
             clearUser()
+            clearTouched()
             closeModal()
             console.log(error)
             return;
@@ -77,7 +82,7 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
   return (
     <>
         <ButtonContainded sx={{ 
-                background: theme.palette.background.paper,
+                background: theme.palette.primary.main,
                 width: '50%',
                 height: '56px',
                 
@@ -92,7 +97,7 @@ export default function ButtonContact({ theme, textButton, closeModal }:ButtonPr
                 style={{
                 fontFamily: '"Quicksand", sans-serif',
                 fontSize: '22px',
-                color: '#A9ACAF',
+                color: `${theme.palette.background.paper}`,
                 fontWeight: '600',
                 textAlign: 'center',
                 lineHeight: '20px',

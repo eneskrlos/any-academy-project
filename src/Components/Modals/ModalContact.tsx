@@ -126,7 +126,7 @@ export default function ModalContact({ theme, open, handleClose } : ModalContact
                         alt: 'Phone',
                         text: 'LLámanos:'
                     }}
-                    subTitle='+1 (305) 607-6884'
+                    subTitle='+1-305-607-6884'
                     isMobil={isMobil} 
                 />
                 <BoxFooterModal

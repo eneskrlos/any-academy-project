@@ -15,6 +15,8 @@ import LinkButton from '../Buttons/LinkButton';
 import AcordionMenu from '../Acordion/AcordionMenu';
 import ModalContact from '../Modals/ModalContact';
 import { storeUser } from '@/store/storeUser';
+import { storeError } from '@/store/storeErrorForm';
+import { storeTouched } from '@/store/storeTouchedFrom';
 
 
 const STYLE_BUTTOM_ICON = (theme: Theme) => ({
@@ -50,10 +52,9 @@ export default function NavMobile() {
 
     const svgWaveBlueUrl = `data:image/svg+xml;base64,${btoa(svgWaveBlue)}`
 
-    const {
-            clearUser
-        } = storeUser()
-    
+    const { clearUser } = storeUser()
+    const { clearError } = storeError()
+      const { clearTouched } = storeTouched()
       const toggleDrawer =
         (open: boolean) =>
         (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -74,6 +75,8 @@ export default function NavMobile() {
         const handleOpenModal = () => setOpenModal(true);
         const handleCloseModal = () => {
           clearUser()
+          clearError()
+          clearTouched()
           setOpenModal(false)
         };
     

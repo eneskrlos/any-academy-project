@@ -46,8 +46,10 @@ export default function HowIsAny() {
                                 fontWeight: '600',
                                 textAlign: 'center',
                                 lineHeight: '40px',
-                                width: '100%',
-                                textWrap: 'wrap'
+                                width: '80%',
+                                textWrap: 'wrap',
+                                position:'relative',
+                                left: isMobil? '0' : '16rem'
                             }}
                         />
                     </header>

@@ -75,6 +75,7 @@ export async function procesSendEmail({ subject, messagePerson, emailPerson, nam
         </html>`
         });
         const { code , message} = response
+        console.log('Se ha enviado el correo correctamente')
         return {
           code, message
         };

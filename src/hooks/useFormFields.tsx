@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import TexFieldBasic from '@/Components/textField/TexFieldBasic';
 // import { User } from '@/interfaces/user';
 import { storeError } from '@/store/storeErrorForm';
@@ -6,6 +6,7 @@ import { storeUser } from '@/store/storeUser';
 import { Theme } from '@mui/material';
 import { EMAIL_REGEX } from '@/utils/constants';
 import { shallow } from 'zustand/shallow';
+import { storeTouched } from '@/store/storeTouchedFrom';
 
 
 interface UseFormFieldsProps {
@@ -20,18 +21,22 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
     
     const error = storeError(state => state.error)
     const updateError = storeError( state => state.updateError );
+
+    const touched = storeTouched(state => state.touched)
+    const updateTouched = storeTouched( state => state.updateTouched );
    
     const user = storeUser(state => state.user)
     const updateUser = storeUser( state => state.updateUser );
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name,  value} = e.target;
-        
-        updateUser({ ...user, [name]: value})
-       
-    };
+    /* const [touched, setTouched] = useState<Record<string, boolean>>({name: false,
+        email: false,
+        phone: false,
+        message: false}) */
 
-    useEffect(() => {
+    
+    // UseCallback para memoizar la función de validación
+    const validate = useCallback(
+      () => {
         const newErrors = {
             name: '',
             email: '',
@@ -48,7 +53,7 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
             if (!user.email?.trim()) {
                 newErrors.email = 'El campo correo no puede ser vacio';
             } else if (!EMAIL_REGEX.test(user.email)) {
-                newErrors.email = 'El email no es valido.';
+                newErrors.email = 'El correo no es valido.';
             }
         }
         if (fieldsToRender.includes('telefono')) {
@@ -63,8 +68,16 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
             if (!user.message?.trim()) {
                newErrors.message = 'El campo mensaje no puede estar vacio.';
            }
-       }
-       const currentErrors = storeError.getState().error;
+        }
+       return newErrors;
+      },
+      [user, fieldsToRender],
+    )
+    
+
+    useEffect(() => {
+        const newErrors = validate();
+        const currentErrors = storeError.getState().error;
 
         // Compara los errores calculados con los actuales.
         //    Usa 'shallow' de Zustand u otra función de comparación superficial.
@@ -72,12 +85,26 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
         if (!shallow(newErrors, currentErrors)) {
             updateError(newErrors);
         }
-    }, [user, updateError, fieldsToRender])
+    }, [user, fieldsToRender, validate, updateError])
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name,  value} = e.target;
+        
+        updateUser({ ...user, [name]: value})
+       
+    };
+    // handle para evento onblur
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name } = e.target;
+        // Marca el campo como "tocado" cuando pierde el foco
+        updateTouched({ ...touched, [name]: true });
+    };
     
 
     const renderFields = () => {
         const fieldComponent = [];
         if (fieldsToRender.includes('nombre')) {
+            const showError = !!error.name && !!touched.name;
             fieldComponent.push(
                 <div key={`nombre`} style={{display: 'flex',flexDirection: 'column',gap: '1px'}} >
                     <TexFieldBasic
@@ -94,16 +121,18 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                             width: isMobil? '300px' :  '350px'
                         }}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         value={user.name || ''}
-                        error={!!error.name} 
+                        error={showError} 
                     />
                     
-                    {error.name && (<span  style={{color: 'red', fontSize: '10px'}}>{error.name}</span>)}
-                    {!error.name && (<span style={{ minHeight: '12px' }}></span>)}
+                    {showError && (<span  style={{color: 'red', fontSize: '10px'}}>{error.name}</span>)}
+                    {!showError && (<span style={{ minHeight: '12px' }}></span>)}
                 </div>
             )
         }
         if (fieldsToRender.includes('telefono')) {
+            const showError = !!error.phone && !!touched.phone;
             fieldComponent.push(
                 <div key={`telefono`}  style={{display: 'flex',flexDirection: 'column',gap: '1px'}}>
                         <TexFieldBasic
@@ -114,21 +143,23 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                         required 
                         fullWidth={false}
                         variant='outlined'
-                        placeholder='+1 (305) 607-6884'
+                        placeholder='+1-305-607-6884'
                         style={{ 
                             border: theme.palette.primary.main,
                             width: isMobil? '300px' :'350px'
                         }}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         value={user.phone || ''}
-                        error={!!error.phone} 
+                        error={showError} 
                     />
-                    {error.phone && (<span  style={{color: 'red', fontSize: '10px'}}>{error.phone}</span>)}
-                    {!error.phone && (<span style={{ minHeight: '12px' }}></span>)}
+                    {showError && (<span  style={{color: 'red', fontSize: '10px'}}>{error.phone}</span>)}
+                    {!showError && (<span style={{ minHeight: '12px' }}></span>)}
                 </div>
             )
         }
         if (fieldsToRender.includes('correo')) {
+            const showError = !!error.email && !!touched.email;
             fieldComponent.push(
                 <div key={`correo`}  style={{display: 'flex',flexDirection: 'column',gap: '1px'}}>
 
@@ -145,15 +176,17 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                             width:isMobil? '300px' : '350px'
                         }} 
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         value={user.email || ''}
-                        error={!!error.email}
+                        error={showError}
                     />
-                    {error.email && (<span  style={{color: 'red', fontSize: '10px'}}>{error.email}</span>)}
-                    {!error.email && (<span style={{ minHeight: '12px' }}></span>)}
+                    {showError && (<span  style={{color: 'red', fontSize: '10px'}}>{error.email}</span>)}
+                    {!showError && (<span style={{ minHeight: '12px' }}></span>)}
                 </div>
             )
         }
         if (fieldsToRender.includes('sms')) {
+            const showError = !!error.message && !!touched.message;
             fieldComponent.push(
                 <div key={`sms`}  style={{display: 'flex',flexDirection: 'column',gap: '1px'}} >
                         <TexFieldBasic
@@ -172,11 +205,12 @@ const useFormFields = ({isMobil, theme, fieldsToRender}:UseFormFieldsProps) => {
                             width:isMobil? '300px' : '350px'
                         }} 
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         value={user.message || ''}
-                        error={!!error.message}
+                        error={showError}
                     />
-                    {error.message && (<span  style={{color: 'red', fontSize: '10px'}}>{error.message}</span>)}
-                    {!error.message && (<span style={{ minHeight: '12px' }}></span>)}
+                    {showError && (<span  style={{color: 'red', fontSize: '10px'}}>{error.message}</span>)}
+                    {!showError && (<span style={{ minHeight: '12px' }}></span>)}
                 </div>
             )
         }

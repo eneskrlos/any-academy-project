@@ -18,6 +18,22 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Any’s Language Academy",
   description: "Any’s Language Academy",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </head>
       <body>
         <Theme>

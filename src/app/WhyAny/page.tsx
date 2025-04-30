@@ -7,6 +7,8 @@ import ButtonContainded from '@/Components/Buttons/ButtonContainded';
 import ImageComponet from '@/Components/Image/ImageComponent';
 import { storeUser } from '@/store/storeUser';
 import ModalContact from '@/Components/Modals/ModalContact';
+import { storeError } from '@/store/storeErrorForm';
+import { storeTouched } from '@/store/storeTouchedFrom';
 
 const LIST_TEXT = [
   {
@@ -43,13 +45,15 @@ export default function WhyAnyPage() {
   const isTable = useMediaQuery("(min-width: 769px) and (max-width: 920px)")
   const screamMedia = useMediaQuery("(min-width: 920px) and (max-width: 1540px)")
   const lastElement = LIST_TEXT.length;
-   const {
-        clearUser
-    } = storeUser()
+  const { clearUser } = storeUser()
+  const { clearError } = storeError()
+  const { clearTouched } = storeTouched()
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     clearUser()
+    clearError()
+    clearTouched()
     setOpen(false)
   }
   
