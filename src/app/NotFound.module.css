@@ -1,0 +1,65 @@
+/* app/NotFound.module.css */
+
+.container {
+  /* Establece el fondo y color de texto PARA ESTA SECCIÓN */
+  background-color: #5086c1;
+  color: white;
+
+  /* Fuente específica para esta sección si no es global */
+  /* font-family: "Quicksand", sans-serif; */ /* Quitar si está en globals.css */
+
+  /* Ocupa el espacio disponible y centra contenido */
+  min-height: 100vh; /* O ajusta según tu layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%; /* Asegura que ocupe el ancho */
+}
+
+.mainContent {
+  text-align: center;
+  max-width: 600px;
+}
+
+.title {
+  /* Ya no necesita font-family si está globalmente en body */
+  font-size: 44px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.description {
+  /* Ya no necesita font-family si está globalmente en body */
+  font-size: 22px;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.illustration {
+  max-width: 200px;
+  height: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.homeLink {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: white;
+  color: rgb(80, 134, 193);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-top: 1.5rem;
+  /* Asegúrate que herede la fuente correcta o defínela explícitamente si es necesario */
+  /* font-family: "Quicksand", sans-serif; */ /* Solo si no está en body o container */
+}
+
+.homeLink:hover {
+  background-color: #f0f0f0;
+  color: rgb(60, 114, 173);
+}
